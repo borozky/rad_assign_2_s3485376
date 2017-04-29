@@ -1,0 +1,902 @@
+/*==========================
+STYLING NORMAL HTML TAGS
+==========================*/
+html, body {
+	font-family: "Open Sans", sans-serif;
+}
+a {}
+a:hover {}
+ul {}
+ul li {}
+ul li a {}
+ul li a:hover {}
+
+
+/*==========================
+CONTAINER - 960px based
+==========================*/
+.container {
+	width: 100%;
+	max-width: 960px;
+	padding-left: 15px;
+	padding-right: 15px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/*==========================
+STICKY FOOTER
+from https://philipwalton.github.io/solved-by-flexbox/demos/sticky-footer/
+==========================*/
+html, body {
+    height: 100%;
+}
+.site-wrapper {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.site-main {
+    flex: 1;
+}
+
+/*==========================
+CLEARFIX
+from https://css-tricks.com/snippets/css/clear-fix/
+==========================*/
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
+* html .clearfix             { zoom: 1; } /* IE6 */
+*:first-child+html .clearfix { zoom: 1; } /* IE7 */
+
+.site-wrapper {}
+.site-header {}
+.site-main {}
+.site-banner {}
+.site-content {
+}
+.site-sidebar {}
+
+/*==========================
+CONTENT BLOCKS
+==========================*/
+.content-block {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+.content-block form button[type=submit].btn {
+	font-size: 15px;
+	padding: 7px 38px;
+}
+@media screen and(min-width: 480px){
+	.content-block {
+		margin-top: 40px;
+		margin-bottom: 40px;
+	}
+}
+
+/*==========================
+SITE FOOTER
+==========================*/
+.site-footer {
+    background-color: #222;
+    color: #ababab;
+    padding-top: 20px;
+}
+
+.site-footer .footer-block {
+	
+}
+
+.site-footer .footer-block ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.site-footer .footer-block ul li {}
+
+.site-footer .footer-block ul li a {
+    color: #dadada;
+    font-size: 13px;
+}
+
+.site-footer .footer-block ul li a:hover {
+    color: #eee;
+}
+.site-footer .footer-bottom {
+	background: #191919;
+	margin-top: 20px;
+	padding-top: 13px;
+	padding-bottom: 13px;
+	font-size: 12px;
+}
+@media screen and (max-width: 768px){
+	.site-footer {
+	}
+
+	.site-footer .footer-block {
+		width: auto;
+		min-width: 250px;
+	}
+	.site-footer .footer-bottom {
+
+	}
+}
+@media screen and (max-width: 480px){
+	.site-footer .row {		
+        max-width: 360px;	
+        margin: 0 auto;
+	}
+    .site-footer .row .footer-block {
+        margin: 0 auto;
+        width: 100%;
+        margin-bottom: 30px;
+    }
+}
+
+/*==========================
+SOCIAL MEDIA ICONS
+==========================*/
+#SocialMediaLinks {}
+
+#SocialMediaLinks a {}
+
+#SocialMediaLinks a:hover {
+    text-decoration: none;
+}
+#SocialMediaLinks a .fa {display: none;}
+#SocialMediaLinks a:hover .fa {
+    display: inline;
+}
+
+
+
+/*==========================
+CONTACT FORM
+==========================*/
+#ContactForm {width: 240px;}
+
+form#ContactForm table {}
+
+form#ContactForm table tr {}
+
+form#ContactForm table tr td {
+    padding: 4px 10px;
+    font-size: 12px;
+}
+
+form#ContactForm table tr td:first-child {
+    padding-left: 0;
+}
+
+form#ContactForm table tr td input[type=text], form#ContactForm table tr td textarea {width: 100%;padding: 0px 5px;}
+
+#ContactForm .form-group {
+    margin-bottom: 0;
+}
+
+#ContactForm label {
+    font-weight: normal;
+    font-size: 12px;
+}
+
+#ContactForm input.form-control {padding: 0 7px;line-height: 1;height: 27px;}
+
+.block-content {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+@media screen and (max-width: 768px){
+	#ContactForm {
+		width: 100%;
+		max-width: 360px;
+	}
+	#ContactForm table {
+    width: 100%;
+}
+}
+
+/*==========================
+OVERRIDE BOOTSTRAP STYLING
+==========================*/
+.btn, .form-control {
+	border-radius: 0;
+}
+
+/*==========================
+LOGIN AREA
+==========================*/
+#LoginArea {
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+    color: #fff;
+    background-color: #2f3f50;
+    font-size: 13px;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+}
+#LoginArea button[type=submit].btn {
+}
+#LoginArea_left {
+    width: 40%;
+    float: left;
+    padding: 20px;
+    display: none;
+}
+#LoginArea_right {
+    width: 100%;
+    float: left;
+    background-color: #f5f5f5;
+    color: #000 !important;
+    padding: 10px 20px 20px 20px;
+}
+@media screen and (min-width: 641px){
+	#LoginArea_left {
+		display:block;
+	}
+	#LoginArea_right {
+		width: 60%;
+	}
+}
+
+/*==========================
+NAVIGATION
+==========================*/
+.nav.navbar {
+    
+}
+
+.profile-menu > a {
+	background-color: #671111 !important;
+    color: #fff !important;
+}
+
+.navbar {
+    margin-bottom: 0;
+}
+
+/*==========================
+REGISTRATION AREA
+==========================*/
+#RegistrationArea {
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+    color: #fff;
+    background-color: #435447;
+    font-size: 13px;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+}
+
+#RegistrationArea button[type=submit].btn {
+}
+
+
+#RegistrationArea_left {
+    width: 40%;
+    float: left;
+    padding: 20px;
+    display: none;
+}
+
+#RegistrationArea_right {
+    width: 100%;
+    float: left;
+    background-color: #f5f5f5;
+    color: #000 !important;
+    padding: 10px 20px 20px 20px;
+}
+
+@media screen and (min-width: 641px){
+
+	#RegistrationArea_left {
+		display: block;
+	}
+
+	#RegistrationArea_right {
+		width: 60%;
+	}
+
+}
+
+/*==========================
+VALIDATION ERRORS
+==========================*/
+.validation-summary {
+    background-color: #ffd5d5;
+    padding: 10px 10px;
+    margin-bottom: 10px;
+    color: #9e0000;
+}
+.validation-summary ul {
+    margin: 0;
+    padding-left: 20px;
+}
+.validation-summary ul li {}
+.validation-error {
+	color: red;
+}
+
+/*=========================
+FLASH MESSAGES with bootstrap alerts
+==========================*/
+.alert {
+    border-radius: 0;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+}
+.alert.alert-success {
+}
+.alert.alert-info {}
+.alert.alert-warning {}
+.alert.alert-danger {}
+
+/*========================
+ENTRY HEADER
+========================*/
+.entry-header {
+
+padding: 20px;
+
+padding-bottom: 10px;
+
+margin-bottom: 20px;
+
+background-color: #f1f1f1;
+
+border-bottom: 1px solid #ddd;
+}
+
+
+/*========================
+LIST OF COURSES
+========================*/
+.courses {
+}
+.course-item {
+    text-align: left;
+    display: inline-block;
+    width: 100%;
+    max-width: 400px;
+    border: 1px solid #ddd;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    position: relative;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+}
+
+.course-item .course-actions {
+    padding-right: 10px;
+    margin-bottom: 10px;
+    font-size: 13px;
+    position: relative;
+}
+
+.course-item .course-actions .vote {
+    display: inline-block;
+    font-size: 15px;
+    margin-left: 10px;
+}
+
+.course-item .course-actions .vote .vote-up, .course-item .course-actions .vote .vote-down {padding: 10px 3px;}
+
+.course-item .course-actions .thumbs-up-votes, .course-item .course-actions .thumbs-down-votes {
+    margin-right: 10px;
+}
+
+.course-item .course-actions .vote a {
+    padding: 10px;
+}
+
+.course-item .course-actions .vote .fa {
+}
+
+.course-item .course-actions .edit-view {
+    display: inline-block;
+    float: right;
+}
+
+.course-item .course-actions a {
+    padding: 4px 10px;
+}
+
+.course-item .course-actions .btn {
+}
+
+.course-item .course-banner {height: 120px;position: relative;overflow: hidden;text-align: center;}
+
+.course-item .course-banner .course-image {
+    display: inline-block;
+    height: 100%;
+    position: relative;
+    margin-left: -200%;
+    left: 100%;
+}
+
+.course-item .course-banner .course-image-fill {
+    position: absolute;
+    left: 0;
+}
+
+.course-item .course-banner .course-title-parent {
+    margin: 0;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    color: #fff;
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&0+0,0.65+100 */
+	background: -moz-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.65) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6000000',GradientType=0 ); /* IE6-9 */
+}
+
+.course-item .course-banner .course-title {	
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    margin: 0;
+}
+
+.course-item .course-banner .course-title a {
+    color: #fff;
+}
+
+.course-item .course-meta {
+    padding: 15px;
+    font-size: 13px;
+}
+
+.course-item .course-meta .course-title {
+    display: none;
+}
+
+.course-item .course-meta p {
+    margin: 0;
+}
+
+.course-item .course-meta .course-coordinator {
+    position: relative;
+    padding-left: 50px;
+}
+
+.course-item .course-meta .course-coordinator {
+    padding-left: 60px;
+    margin-top: 10px;
+    min-height: 50px;
+}
+
+.course-item .course-meta .course-datecreated {}
+
+.course-item .course-meta .course-coordinator .course-coordinator-gravatar {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.course-item .course-meta ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+@media screen and (min-width: 641px){
+	.courses {
+	}
+	.course-item {
+		min-width: 300px;
+		width: 300px;
+	}
+
+	.course-item .course-banner {
+	}
+
+	.course-item .course-banner .course-image-fill {
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		margin-top: -100%;
+		top: 200%;
+	}
+
+}
+
+.courses.list-view {
+    margin-right: -15px;
+    margin-left: -15px;
+}
+.courses.list-view .course-item {
+    max-width: 100%;
+}
+.courses.list-view .course-item.has-image {
+	max-width: 100%;
+	width: 100%;
+	padding-left: 88px;
+	min-height: 150px;
+	position: relative;
+	border-left: none;
+	border-right: none;
+}
+.courses.list-view .course-item .course-banner {
+	display: none;
+}
+.courses.list-view .course-item.has-image .course-banner {
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    overflow: hidden;
+    text-align: center;
+}
+.courses.list-view .course-item .course-meta .course-title {
+	display: block;
+	font-size: 16px;
+}
+
+.courses.list-view .course-item .course-banner .course-title-parent {
+	display: none;
+}
+
+
+
+@media screen and (min-width: 640px){
+	.courses.list-view {
+		margin-left: 0;
+		margin-right: 0;
+	}
+	.courses.list-view .course-item {
+		max-width: 100%;
+		width: 100%;
+		padding-left: 160px;
+		min-height: 150px;
+		position: relative;
+	}
+	.courses.list-view .course-item .course-banner {
+		display: inline-block;
+		width: 150px;
+		height: 150px;
+		position: absolute;
+		left: 10px;
+		top: 10px;
+		overflow: hidden;
+		text-align: center;
+	}
+	.courses.list-view .course-item .course-meta .course-title {
+		display: block;
+	}
+
+	.courses.list-view .course-item .course-banner .course-title-parent {
+		display: none;
+	}
+}
+
+
+
+/*========================
+COURSE DETAILS
+========================*/
+.course {
+    margin-bottom: 40px;
+    margin-top: 40px;
+    max-width: 720px;
+    position: relative;
+}
+.course .edit-course {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 999;
+}
+
+.course .course-banner {
+    height: 160px;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+}
+
+.course .course-title-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&0+0,0.65+100 */
+    background: -moz-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.65) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6000000',GradientType=0 ); /* IE6-9 */
+}
+.course .course-title {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    color: #fff;
+    width: 100%;
+    padding-left: 10px;
+    text-align: left;
+    font-size: 18px;
+}
+.course .course-banner .vote {
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: #337ab7;
+	color: #fff;
+}
+
+.course .course-banner .vote a {
+    color: #ddd;
+}
+
+.course .course-banner .vote a:hover {
+    color: #fff;
+}
+
+.course .course-banner .vote .downvote {
+    margin-left: 10px;
+}
+
+.course .course-banner img {
+    display: inline-block;
+    width: 100%;
+    min-height: 160px;
+}
+
+.course .course-meta {
+    padding: 20px 0;
+}
+
+.course .course-description {
+    max-width: 733px;
+}
+
+.course .course-coordinator {
+	padding-left: 60px;
+	position: relative;
+}
+.course .course-coordinator img {
+    width: 50px;
+    position: absolute;
+    left: 0;
+}
+
+.course .course-actions {
+    max-width: 733px;
+    position: relative;
+    padding: 15px 0;
+}
+
+.course .course-actions .vote {
+    float: right;
+}
+
+.course .course-actions .vote .upvote {
+    margin-right: 10px;
+}
+@media screen and (min-width: 480px){
+	.course .course-title {
+		font-size: 24px;
+	}
+}
+
+
+/*========================
+EDIT/CREATE COURSE
+========================*/
+#CoursesEditArea,
+#CoursesNewArea {
+	max-width: 720px;
+	background-color: #f5f5f5;
+	padding: 15px;
+	border: 1px solid #ddd;
+}
+
+#CoursesEditArea form,
+#CoursesNewArea form {}
+
+#CoursesEditArea .form-group ul, 
+#CoursesNewArea .form-group ul {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+#CoursesEditArea .form-group ul li,
+#CoursesNewArea .form-group ul li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+#CoursesEditArea .image-preview-area,
+#CoursesNewArea .image-preview-area {
+	margin-top: 7px;
+	display: inline-block;
+	max-width: 240px;
+	max-height: 100px;
+	}
+
+#CoursesEditArea .image-preview-area img,
+#CoursesNewArea .image-preview-area img {width: 100%;}
+
+@media screen and (min-width: 480px){
+	#CoursesEditArea,
+	#CoursesNewArea {
+		padding-left: 30px;
+		padding-right: 30px;
+		margin-left: auto;
+		margin-right: auto;
+	}	
+}
+
+
+
+/*========================
+ENTRY-XXXXXXX styling
+========================*/
+.entry-header {
+    margin-bottom: 0;
+    padding: 0;
+}
+
+.entry-title {
+	margin-top: 0.5em;
+    font-size: 24px;
+}
+.entry-header .entry-title {
+	margin-bottom: 20px;
+	margin-top: 30px;
+	font-size: 20px;
+}
+
+@media screen and (min-width: 480px){
+	.entry-header {padding-top: 20px;}
+	.entry-header .entry-title {
+		margin-bottom: 20px;
+	}
+	.entry-title {
+		margin-top: 1em;
+		font-size: 30px;
+	}
+}
+
+
+/*========================
+USER PROFILE AREA
+========================*/
+#UserShowArea {}
+
+#UserShowArea .user-profile {
+}
+
+#UserShowArea .user-profile .profile-top {
+    padding-left: 95px;
+    position: relative;
+    height: 80px;
+}
+
+#UserShowArea .user-profile .gravatar-image-area {
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 2px;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+}
+
+#UserShowArea .user-profile .user-info {
+    position: absolute;
+    bottom: 0;
+}
+
+#UserShowArea .user-profile .user-info h4 {
+    font-size: 15px;
+}
+
+#UserShowArea .user-profile .user-info h3 {
+    font-size: 22px;
+}
+
+#UserShowArea .user-profile .courses {
+    border-top: 1px solid #ddd;
+    margin-top: 15px;
+    text-align: center;
+}
+
+#UserShowArea .user-profile .gravatar-image-area img {
+    display: inline-block;
+    width: 100%;
+}
+
+@media screen and (min-width: 768px){
+	#UserShowArea .user-profile {
+	}
+
+	#UserShowArea .user-profile .profile-top {
+		padding-left: 165px;
+		position: relative;
+		height: 150px;
+	}
+
+	#UserShowArea .user-profile .gravatar-image-area {
+		display: inline-block;
+		width: 150px;
+		height: 150px;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		padding: 2px;
+		box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+	}
+
+	#UserShowArea .user-profile .user-info {
+		position: absolute;
+		bottom: 0;
+	}
+
+	#UserShowArea .user-profile .user-info h3, #UserShowArea .user-profile .user-info h4 {
+	}
+
+	#UserShowArea .user-profile .courses {
+		border-top: 1px solid #ddd;
+		margin-top: 15px;
+		text-align: left;
+	}
+
+	#UserShowArea .user-profile .gravatar-image-area img {
+		display: inline-block;
+		width: 100%;
+	}
+
+}
+
+/*========================
+USER EDIT AREA
+========================*/
+#UserEditArea {
+	width: 100%;
+	max-width: 480px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 20px;
+	background-color: #f5f5f5;
+	box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+
+}
+
+#UserEditArea .entry-title {
+    margin-top: 0.5em;
+}
+
+
+/*========================
+CATEGORIES EDIT/NEW AREA
+========================*/
+#CategoriesEditArea, #CategoriesNewArea {
+	width: 100%;
+	max-width: 480px;
+	background-color: #f5f5f5;
+	padding: 15px 30px;
+	border: 1px solid #ddd;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#CategoriesEditArea button[type=submit].btn, 
+#CategoriesNewArea button[type=submit].btn {
+	padding: 10px 30px;
+	font-size: 15px;
+}
