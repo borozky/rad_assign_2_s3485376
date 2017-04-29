@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  thumbs_up: false
+  user: 
+  course: 
+
+two:
+  thumbs_up: false
+  user: 
+  course: 
