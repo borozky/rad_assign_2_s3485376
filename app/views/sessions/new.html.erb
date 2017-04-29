@@ -1,0 +1,23 @@
+<h1>Login</h1>
+
+<% flash.each do |name, message| %>
+	<%= content_tag :p, message, class: "alert alert-" + name %>
+<% end %>
+
+<%= form_tag "/login" do %>
+	<table>
+		<tr>
+			<td>Email:</td>
+			<td><%= text_field_tag :email %></td>
+		</tr>
+		<tr>
+			<td>Password</td>
+			<td><%= password_field_tag :password %></td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<%= submit_tag "Submit" %>
+			</td>
+		</tr>
+	</table>
+<% end %>

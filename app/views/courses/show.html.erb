@@ -17,12 +17,16 @@
 
 <p>
   <strong>Locations:</strong>
-  <%= @course.locations %>
+  <% @course.locations.each do |l| %>
+  <span><%= l.at %></span>
+  <% end %>
 </p>
 
 <p>
   <strong>Categories:</strong>
-  <%= @course.categories %>
+  <% @course.categories.each do |c| %>
+  <span><%= c.name %></span>
+  <% end %>
 </p>
 
 <%= link_to 'Edit', edit_course_path(@course) %> |
