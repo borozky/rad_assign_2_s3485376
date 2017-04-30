@@ -7,6 +7,10 @@ class CoursesController < ApplicationController
   # GET /courses.json
   def index
     @courses = Course.all
+    @coordinators = []
+    @courses.each do |course|
+      @coordinators << course.created_by
+    end
   end
 
   # GET /courses/1
