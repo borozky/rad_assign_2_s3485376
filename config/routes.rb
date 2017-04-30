@@ -8,7 +8,10 @@ Rails.application.routes.draw do
   resources :users
   get "/signup" => "users#new", as: "signup"
 
-  resources :courses
+  resources :courses do
+    get "forbidden" => "courses#forbidden"
+  end
+
   resources :locations
   resources :categories
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

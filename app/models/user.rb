@@ -4,6 +4,8 @@ class User < ApplicationRecord
   has_many :votes
   has_many :courses, through: :votes
 
+  has_many :courses
+  
   validates :name, :email, :password_digest, presence: true
 
   validates :name,    length: { minimum: 4 }

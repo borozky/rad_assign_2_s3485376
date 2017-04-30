@@ -1,6 +1,7 @@
 class CoursesController < ApplicationController
   before_action :set_course, only: [:show, :edit, :update, :destroy]
   before_action :authorize, except: [:index, :show]
+  before_action :can_edit_course?, only: [:edit, :update, :destroy]
   
   # GET /courses
   # GET /courses.json
@@ -26,6 +27,9 @@ class CoursesController < ApplicationController
   # POST /courses.json
   def create
     @course = Course.new(course_params)
+    if current_user
+      @course.created_by = current_user
+    end
 
     respond_to do |format|
       if @course.save
@@ -71,5 +75,11 @@ class CoursesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def course_params
       params.require(:course).permit(:name, :description, :prerequisite, location_ids:[], category_ids:[])
+    end
+
+    def can_edit_course?
+      unless @course.created_by.id == current_user.id
+        render "forbidden"
+      end
     end
 end

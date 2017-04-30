@@ -17,25 +17,25 @@
   </div>
 
   <div class="field">
-    <%= f.label :description %>
-    <%= f.text_field :description %>
+    <%= f.label :prerequisite %>
+    <%= f.text_field :prerequisite %>
   </div>
 
   <div class="field">
-    <%= f.label :prerequisite %>
-    <%= f.text_area :prerequisite, rows: 10 %>
+    <%= f.label :description %>
+    <%= f.text_area :description, rows: 10 %>
   </div>
 
   <div class="field">
     <%= f.label :locations %>
     <table>
-    <%= f.collection_check_boxes :location_ids, Location.all, :id, :at do |l| %>
-      <tr>
-        <td><%= l.check_box %></td>
-        <td><%= l.label %></td>
-      </tr>
+      <%= f.collection_check_boxes :location_ids, Location.all, :id, :at do |l| %>
+        <tr class="something">
+          <td><%= l.check_box %></td>
+          <td><%= l.label %></td>
+        </tr>
+      <% end %>
     </table>
-    <% end %>
   </div>
 
   <div class="field">
@@ -46,8 +46,8 @@
         <td><%= c.check_box %></td>
         <td><%= c.label %></td>
       </tr>
-    </table>
     <% end %>
+    </table>
   </div>
 
   <div class="actions">

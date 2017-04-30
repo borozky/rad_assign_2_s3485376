@@ -20,6 +20,9 @@ class CategoriesController < ApplicationController
 
   # GET /categories/1/edit
   def edit
+    if @course.created_by.id != current_user.id
+      render "forbidden"
+    end
   end
 
   # POST /categories

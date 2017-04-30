@@ -1,5 +1,10 @@
 <h1>Editing Course</h1>
 
+<%= @editable %>
+current_user: <%= current_user.name %><br>
+created_by: <%= @course.created_by.name %>
+
+
 <%= render 'form', course: @course %>
 
 <%= link_to 'Show', @course %> |

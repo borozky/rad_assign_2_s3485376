@@ -29,5 +29,11 @@
   <% end %>
 </p>
 
-<%= link_to 'Edit', edit_course_path(@course) %> |
+<p>
+  <strong>Created by:</strong>
+  <%= @course.created_by.name %>
+</p>
+<% if course_editable?(@course) %>
+  <%= link_to 'Edit', edit_course_path(@course) %> |
+<% end %>
 <%= link_to 'Back', courses_path %>
