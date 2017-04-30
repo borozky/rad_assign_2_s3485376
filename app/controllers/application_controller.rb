@@ -7,14 +7,14 @@ class ApplicationController < ActionController::Base
   end
   helper_method :current_user
 
-  def authorise
+  def authorize
   	redirect_to login_url unless current_user
   end
 
   # method name inspired by plataformatec/devise, 
   # implementation is mine though
   def user_signed_in?
-    session[:user_id] != nil
+    current_user != nil
   end
   helper_method :user_signed_in?
 
