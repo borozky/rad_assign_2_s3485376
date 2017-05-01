@@ -50,6 +50,12 @@
     </table>
   </div>
 
+  <div class="field">
+    <%= f.label :image %>
+    <%= f.file_field :image %>
+    <%= image_tag course.image.url if course.image? %>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

@@ -30,6 +30,11 @@
 </p>
 
 <p>
+  <strong>Image:</strong>
+  <%= image_tag @course.image.url if @course.image? %>
+</p>
+
+<p>
   <strong>Created by:</strong>
   <%= @course.created_by.name %>
 </p>

@@ -1,4 +1,6 @@
 class Course < ApplicationRecord
+	mount_uploader :image, CourseImageUploader
+	
 	has_many :votes
 	has_many :users, through: :votes
 
