@@ -15,8 +15,8 @@
       <tr>
         <td><%= location.at %></td>
         <td><%= link_to 'Show', location %></td>
-        <td><%= link_to 'Edit', edit_location_path(location) %></td>
-        <td><%= link_to 'Destroy', location, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Edit', edit_location_path(location) if current_user  %></td>
+        <td><%= link_to 'Destroy', location, method: :delete, data: { confirm: 'Are you sure?' } if current_user  %></td>
       </tr>
     <% end %>
   </tbody>
