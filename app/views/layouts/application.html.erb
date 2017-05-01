@@ -9,6 +9,21 @@
   </head>
 
   <body>
+  <p>
+  <b>Locations:</b>
+    <% @locations.each do |location| %>
+    <%= link_to location.at, locations_path(location) %>
+    <% end%>
+    <%= link_to "Create new location", new_location_path if current_user %>
+  </p>
+  <p>
+  <b>Categories:</b>
+    <% @categories.each do |category| %>
+    <%= link_to category.name, categories_path(category) %>
+    <% end%>
+    <%= link_to "Create new category", new_category_path if current_user %>
+  </p>
+
   <%= link_to "Courses", courses_path %> 
   <%= link_to "Categories", categories_path %> 
   <%= link_to "Locations", locations_path %> 

@@ -1,6 +1,17 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
+  before_action :get_locations
+  before_action :get_categories
+
+  def get_locations
+    @locations = Location.all
+  end
+
+  def get_categories
+    @categories = Category.all
+  end
+
   # https://gist.github.com/thebucknerlife/10090014
   def current_user
   	@current_user ||= User.find(session[:user_id]) if session[:user_id]
