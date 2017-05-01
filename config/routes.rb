@@ -10,7 +10,9 @@ Rails.application.routes.draw do
 
   resources :courses do
     get "forbidden" => "courses#forbidden"
+    post "vote" => "courses#vote"
   end
+
 
   resources :locations
   resources :categories

@@ -1,5 +1,5 @@
 class CoursesController < ApplicationController
-  before_action :set_course, only: [:show, :edit, :update, :destroy]
+  before_action :set_course, only: [:show, :edit, :update, :destroy, :vote]
   before_action :authorize, except: [:index, :show]
   before_action :can_edit_course?, only: [:edit, :update, :destroy]
   
@@ -25,6 +25,26 @@ class CoursesController < ApplicationController
 
   # GET /courses/1/edit
   def edit
+  end
+
+  # POST
+  def vote
+    unless current_user
+      render json: { message: "Only logged in users are allowed to vote"}, status: :unprocessable_entity
+      return
+    end
+
+    @vote = Vote.new
+    @vote.user = current_user
+    @vote.course = @course
+    @vote.thumbs_up = params[:vote]
+
+    if @vote.save
+      render json: { message: "Success" }, status: :created
+    else
+      render json: @vote.errors, status: :unprocessable_entity
+    end
+
   end
 
   # POST /courses
