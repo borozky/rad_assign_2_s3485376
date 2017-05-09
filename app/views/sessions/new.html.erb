@@ -1,23 +1,43 @@
-<h1>Login</h1>
+<div class="content-block clearfix" id="LoginArea">
 
-<% flash.each do |name, message| %>
-	<%= content_tag :p, message, class: "alert alert-" + name %>
-<% end %>
+	<div id="LoginArea_left">
+		<h3>Login</h3>
+		<p>Consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore 
+		magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea 
+		rebum. Stet clita kasd gubergren, no sea takimata.</p>
+	</div>
 
-<%= form_tag "/login" do %>
-	<table>
-		<tr>
-			<td>Email:</td>
-			<td><%= text_field_tag :email %></td>
-		</tr>
-		<tr>
-			<td>Password</td>
-			<td><%= password_field_tag :password %></td>
-		</tr>
-		<tr>
-			<td colspan="2">
-				<%= submit_tag "Submit" %>
-			</td>
-		</tr>
-	</table>
-<% end %>
+	<div id="LoginArea_right">
+		<%= # no resource is modified when logging in, so use form_tag() instead of form_for()
+		form_tag login_path do  %>
+			<h3>Login</h3>
+			<h4>Please login to access this content</h4>
+
+			<% if flash%>
+				<% flash.each do |name, message| %>
+					<%= content_tag :p, message, class: "alert alert-" + name %>
+				<% end %>
+			<% end %>
+
+			<div class="form-group">
+				<%= label_tag :email %>
+				<%= email_field_tag :email, "", class: "input-sm form-control" %>
+			</div>
+
+			<div class="form-group">
+				<%= label_tag :password %>
+				<%= password_field_tag :password, "", class: "input-sm form-control" %>
+			</div>
+
+			<div class="form-group">
+				<%= submit_tag "Log In", class: "btn btn-lg btn-primary" %>
+			</div>
+
+			<div class="form-group">
+				<%= link_to "Don't have an account? Register", signup_path %>
+			</div>
+
+		<% end %>
+	</div>
+
+</div><!-- end #LoginArea.block-content -->

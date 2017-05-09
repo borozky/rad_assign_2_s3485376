@@ -1,48 +1,12 @@
+<% content_for :entry_header do %>
+  <div class="entry-header">
+    <div class="container">
+      <h2>All Courses</H2>
+    </div>
+  </div>
+<% end%>
+
 <p id="notice"><%= notice %></p>
-
-<h1>Courses</h1>
-
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Prerequisite</th>
-      <th>Locations</th>
-      <th>Categories</th>
-      <th>Created</th>
-      <th colspan="2"></th>
-      <th>Vote up</th>
-      <th>Vote down</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @courses.each do |course| %>
-      <tr>
-        <td><%= course.name %></td>
-        <td><%= course.description %></td>
-        <td><%= course.prerequisite %></td>
-        <td>
-          <%= course.locations.collect { |l| link_to(l.at, l) }.join(",").html_safe %>
-        </td>
-        <td>
-          <%= course.categories.collect { |c| 
-              link_to(c.name, c) }.join(",").html_safe 
-          %>
-        </td>
-        <td><%= time_ago_in_words(course.created_at) %></td>
-        <td><%= link_to 'Show', course %></td>
-        <td><%= link_to 'Edit', edit_course_path(course) if course_editable?(course) %></td>
-        <td><%= link_to "Vote up", course_vote_path(course.id, id: course.id, vote: true), method: :post if current_user %></td>
-        <td><%= link_to "Vote down", course_vote_path(course.id, id: course.id, vote: false), method: :post if current_user %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
 
 <h2>Coordinators</h2>
 <ul>
@@ -51,4 +15,13 @@
   <% end %>
 </ul>
 
-<%= link_to 'New Course', new_course_path %>
+<%= link_to 'New Course', new_course_path if current_user %>
+
+
+<div class="content-block" id="CoursesIndexArea">
+  <div class="courses">
+  <% @courses.each do |course| %>
+  <%= render "course", course: course %>
+  <% end %>
+  </div>
+</div>

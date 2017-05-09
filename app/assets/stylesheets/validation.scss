@@ -1,0 +1,27 @@
+/*==========================
+VALIDATION ERRORS
+==========================*/
+.validation-summary {
+    background-color: #ffd5d5;
+    padding: 10px 10px;
+    margin-bottom: 10px;
+    color: #9e0000;
+
+    ul {
+    	margin: 0;
+    	padding-left: 20px;
+
+    	li {
+
+    	}
+    }
+}
+.validation-error {
+	color: red;
+}
+
+.field_with_errors {
+    input {
+        border: 1px solid red;
+    }
+}

@@ -1,44 +1,83 @@
-<p id="notice"><%= notice %></p>
+<%= content_tag :p, notice, class: "alert alert-success" unless notice.nil? %>
 
-<p>
-  <strong>Name:</strong>
-  <%= @course.name %>
-</p>
+<div class="content-block" id="CourseShowArea">
+  <div class="course">
 
-<p>
-  <strong>Description:</strong>
-  <%= @course.description %>
-</p>
+    <%= link_to edit_course_path(@course), class: "edit-course btn btn-sm btn-success" do %>
+    <i class="fa fa-edit"></i> &nbsp;Edit this course
+    <% end if current_user %>
 
-<p>
-  <strong>Prerequisite:</strong>
-  <%= @course.prerequisite %>
-</p>
+    <div class="course-banner">
 
-<p>
-  <strong>Locations:</strong>
-  <% @course.locations.each do |l| %>
-  <span><%= l.at %></span>
-  <% end %>
-</p>
+      <%= image_tag @course.image.url if @course.image? %>
 
-<p>
-  <strong>Categories:</strong>
-  <% @course.categories.each do |c| %>
-  <span><%= c.name %></span>
-  <% end %>
-</p>
+      <div class="course-title-wrapper">
+        <%= content_tag :h3, @course.name, class: "course-title" %>
+      </div>
 
-<p>
-  <strong>Image:</strong>
-  <%= image_tag @course.image.url if @course.image? %>
-</p>
+      <% if current_user %>
+        <span class="vote">
+          <%= link_to course_vote_path(@course.id, id: @course.id, vote: true), method: :post, class: "vote-up btn" do %>
+            <i class="fa fa-thumbs-up"></i> <span class="votes">0</span>
+          <% end %>
+          <%= link_to course_vote_path(@course.id, id: @course.id, vote: false), method: :post, class: "vote-up btn" do %>
+            <i class="fa fa-thumbs-down"></i> <span class="votes">0</span>
+          <% end %>
+        </span>
+      <% end %>
 
-<p>
-  <strong>Created by:</strong>
-  <%= @course.created_by.name %>
-</p>
-<% if course_editable?(@course) %>
-  <%= link_to 'Edit', edit_course_path(@course) %> |
-<% end %>
-<%= link_to 'Back', courses_path %>
+    </div>
+    <div class="course-meta">
+      <div class="row">
+        <div class="col-sm-6">
+
+          <p class="course-prerequisite">
+            <b>Prerequisites:</b> : <%= @course.prerequisite %>
+          </p>
+
+          <p class="course-category">
+            <b>Category:</b> 
+            <% @course.categories.each do |c| %>
+            <%= link_to c.name, category_path(c), class: "btn btn-xs btn-success" %>
+            <% end %>
+          </p>
+
+          <p class="course-location">
+            <b>Location: </b>
+            <% @course.locations.each do |l| %>
+            <%= link_to l.at, location_path(l), class: "btn btn-xs btn-danger" %>
+            <% end %>
+          </p>
+
+        </div>
+        <div class="col-sm-6">
+          <p class="course-coordinator">
+            <%= image_tag gravatar_image_url(@course.user.email), alt: "#{@course.user.name}'s gravatar" %>
+            <b>Course coordinator</b>:<br>
+            <%= link_to @course.user.name, user_path(@course.user) %>
+          </p>
+        </div>
+      </div>
+    </div><!-- end .course-meta -->
+
+    <div class="course-description">
+      <%= @course.description %>
+    </div>
+
+    <div class="course-actions clearfix">
+      <%= link_to "Return to course list", courses_path %>
+
+      <% if current_user %>
+        <span class="vote">
+          <%= link_to course_vote_path(@course.id, id: @course.id, vote: true), method: :post, class: "vote-up btn" do %>
+            <i class="fa fa-thumbs-up"></i> <span class="votes">0</span>
+          <% end %>
+          <%= link_to course_vote_path(@course.id, id: @course.id, vote: false), method: :post, class: "vote-up btn" do %>
+            <i class="fa fa-thumbs-down"></i> <span class="votes">0</span>
+          <% end %>
+        </span>
+      <% end %>
+
+    </div>
+  </div>
+</div>

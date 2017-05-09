@@ -1,62 +1,46 @@
 <%= form_for(course) do |f| %>
-  <% if course.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(course.errors.count, "error") %> prohibited this course from being saved:</h2>
-
-      <ul>
-      <% course.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
+  <div class="form-group">
     <%= f.label :name %>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
+  <%= f.label :description %>
+  <%= f.text_area :description, size: "30x10", class: "input-sm form-control" %>
+  </div>
+
+  <div class="form-group">
     <%= f.label :prerequisite %>
-    <%= f.text_field :prerequisite %>
+    <%= f.text_field :prerequisite, class: "input-sm form-control" %>
   </div>
 
-  <div class="field">
-    <%= f.label :description %>
-    <%= f.text_area :description, rows: 10 %>
-  </div>
-
-  <div class="field">
+  <div class="form-group">
     <%= f.label :locations %>
-    <table>
+    <ul>
       <%= f.collection_check_boxes :location_ids, Location.all, :id, :at do |l| %>
-        <tr class="something">
-          <td><%= l.check_box %></td>
-          <td><%= l.label %></td>
-        </tr>
+        <li><%= l.check_box %> &nbsp;<%= l.label %></li>
       <% end %>
-    </table>
+    </ul>
   </div>
 
-  <div class="field">
-    <%= f.label :categories %>
-    <table>
-    <%= f.collection_check_boxes :category_ids, Category.all, :id, :name do |c| %>
-      <tr>
-        <td><%= c.check_box %></td>
-        <td><%= c.label %></td>
-      </tr>
-    <% end %>
-    </table>
+  <div class="form-group">
+    <%= f.label :categories%>
+    <ul>
+      <%= f.collection_check_boxes :category_ids, Category.all, :id, :name do |c| %>
+        <li><%= c.check_box %> &nbsp;<%= c.label %></li>
+      <% end %>
+    </ul>
   </div>
 
-  <div class="field">
-    <%= f.label :image %>
+  <div class="form-group">
+    <%= f.label :image %><br>
     <%= f.file_field :image %>
-    <%= image_tag course.image.url if course.image? %>
+    <span class="image-preview-area"><%= image_tag course.image.url if course.image? %></span><br>
   </div>
 
-  <div class="actions">
-    <%= f.submit %>
+  <div class="form-group text-right">
+    <%= f.submit "Update", class: "btn btn-lg btn-success" %>
   </div>
 <% end %>
+
+

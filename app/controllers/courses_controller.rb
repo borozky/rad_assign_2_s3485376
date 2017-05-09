@@ -9,7 +9,7 @@ class CoursesController < ApplicationController
     @courses = Course.all
     @coordinators = []
     @courses.each do |course|
-      @coordinators << course.created_by
+      @coordinators << course.user
     end
   end
 
@@ -52,7 +52,7 @@ class CoursesController < ApplicationController
   def create
     @course = Course.new(course_params)
     if current_user
-      @course.created_by = current_user
+      @course.user = current_user
     end
 
     respond_to do |format|
@@ -94,7 +94,7 @@ class CoursesController < ApplicationController
     end
 
     def can_edit_course?
-      unless @course.created_by.id == current_user.id
+      unless @course.user.id == current_user.id
         render "forbidden"
       end
     end

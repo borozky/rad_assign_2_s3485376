@@ -1,6 +1,5 @@
-<h1>Editing User</h1>
-
-<%= render 'form', user: @user %>
-
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', users_path %>
+<div class="content-block" id="UserEditArea">
+  <h2 class="entry-title">Edit user</h2>
+	<%= render 'form', user: @user if current_user %>
+	<p><%= link_to 'Show Profile', @user %> | <%= link_to 'Back', users_path %></p>
+</div><!-- end #UserEditArea -->

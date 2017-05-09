@@ -1,9 +1,30 @@
-<p id="notice"><%= notice %></p>
+<%= content_for :entry_header do %>
+<div class="entry-header">
+	<div class="container">
+		<h2 class="entry-title">Category: <%= @category.name %></h2>
+	</div>
+</div>
+<% end %>
 
-<p>
-  <strong>Name:</strong>
-  <%= @category.name %>
-</p>
+<div class="content-block" id="CategoriesIndexArea">
+	<div class="courses-display-settings">
+		<div class="dropdown">
+			<button id="CourseView" class="btn btn-sm btn-default" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				Dropdown trigger <span class="caret"></span>
+			</button>
+			<ul class="dropdown-menu" aria-labelledby="CourseView">
+				<li><a href="#">Grid view</a></li>
+				<li><a href="#">List view</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="courses list-view">
+		<% @category.courses.each do |course| %>
+		<%= render "courses/course", course: course %>
+		<% end %>
+	</div>
 
-<%= link_to 'Edit', edit_category_path(@category) if current_user  %> |
-<%= link_to 'Back', categories_path %>
+	<p><%= link_to 'Edit', edit_category_path(@category) if current_user  %> | <%= link_to 'Back', categories_path %></p>
+</div>
+
+

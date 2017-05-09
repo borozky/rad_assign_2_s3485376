@@ -1,0 +1,41 @@
+/*==========================
+OVERRIDE BOOTSTRAP STYLING
+==========================*/
+.btn, .form-control {
+	border-radius: 0;
+}
+
+
+/*=========================
+FLASH MESSAGES with bootstrap alerts
+==========================*/
+.alert {
+    border-radius: 0;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+
+    .alert-success {
+
+    }
+    .alert-info {
+
+    }
+    .alert-warning {
+
+    }
+    .alert-danger {
+
+    }
+}
+
+/*=========================
+JUMBOTRONS
+==========================*/
+.jumbotron {
+    h1 {
+        font-size: 48px;
+    }
+
+    .container {
+        max-width: 960px;
+    }
+}

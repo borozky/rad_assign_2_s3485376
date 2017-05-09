@@ -1,5 +1,47 @@
-<h1>New User</h1>
+<div class="block-content clearfix" id="RegistrationArea">
+	<div id="RegistrationArea_left">
+		<h3>Register</h3>
+		<p>Consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore 
+		magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea 
+		rebum. Stet clita kasd gubergren, no sea takimata.</p>
+	</div>
+	<div id="RegistrationArea_right">
+		<%= form_for(@user) do |f| %>
+			<h3>Register</h3>
+			<% if @user.errors.any? %>
+			<h4><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved</h4>
+				<div class="validation-summary">
+					<ul>
+						<% @user.errors.full_messages.each do |message| %>
+							<li><%= message %></li>
+						<% end %>
+					</ul>
+				</div>
+			<% end %>
 
-<%= render 'form', user: @user %>
+			<div class="form-group">
+				<%= f.label :name %>
+				<%= f.text_field :name, class: "input-sm form-control" %>
+			</div>
 
-<%= link_to 'Back', users_path %>
+			<div class="form-group">
+				<%= f.label :email %>
+				<%= f.email_field :email, class: "input-sm form-control" %>
+			</div>
+
+			<div class="form-group">
+				<%= f.label :password %>
+				<%= f.password_field :password, class: "input-sm form-control" %>
+			</div>
+
+			<div class="form-group">
+				<%= f.submit "Register", class: "btn btn-lg btn-success" %>&nbsp;&nbsp;&nbsp;
+				<%= link_to "Cancel", url_for(:back) %>
+			</div>
+
+			<div class="form-group">
+				<%= link_to "Already have an account? Sign in", login_path %>
+			</div>
+		<% end %>
+	</div>
+</div><!-- end #RegistrationArea.block-content -->

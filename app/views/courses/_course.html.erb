@@ -1,0 +1,58 @@
+<div class="course-item<%= !course.image.nil? ? " has-image" : "" %>">
+
+  <div class="course-banner">
+    <%= image_tag course.image, alt: course.name, class: "course-image" %>
+    <div class="course-title-parent">
+      <h4 class="course-title"><%= link_to course.name, course_path(course) %></h4>
+    </div>
+  </div>
+
+  <div class="course-meta">
+    <h4 class="course-title"><%= link_to course.name, course_path(course) %></h4>
+
+    <p class="course-prerequisites">
+      <b>Prerequisites:</b> <%= course.prerequisite %>
+    </p>
+
+    <p class="course-location">
+      <b>Location:</b> 
+      <% course.locations.each do |location| %>
+      <%= link_to location.at, location_path(location) %>
+      <% end %>
+    </p>
+
+    <p class="course-coordinator">
+      <%= image_tag gravatar_image_url(course.user.email), class: "course-coordinator-gravatar" %>
+      <b>Course coordinator:</b><br><%= link_to course.user.name, user_path(course.user) %>
+    </p>
+
+    <p class="course-datecreated">
+      <small><b>Date created:</b> <%= time_ago_in_words(course.created_at) %></small>
+    </p>
+  </div>
+
+  <div class="course-actions clearfix">
+    <% if current_user %>
+      <span class="vote">
+
+          <!-- TODO: Code for number of upvotes -->
+        <%= link_to course_vote_path(course.id, id: course.id, vote: true), method: :post do %>
+          <i class="fa fa-thumbs-up"></i>
+          <span class="thumbs-up-votes">0</span>
+        <% end %>
+
+        <!-- TODO: Code for number of downvotes -->
+        <%= link_to course_vote_path(course.id, id: course.id, vote: false), method: :post do %>
+          <i class="fa fa-thumbs-down"></i>
+          <span class="thumbs-down-votes">0</span>
+        <% end %>
+
+      </span>
+    <% end %>
+
+    <span class="edit-view">
+      <%= link_to "Edit", edit_course_path(course) if course_editable?(course) %>
+      <%= link_to "View course", course_path(course), class: "btn btn-sm btn-info" %>
+    </span>
+  </div>
+</div><!-- end .course-item -->

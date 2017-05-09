@@ -19,7 +19,11 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
   def authorize
-  	redirect_to login_url unless current_user
+    unless current_user
+      session[:original_target] = request.url
+      flash[:notice] = "You must be logged in to view that page"
+      redirect_to login_url
+    end
   end
 
   # method name inspired by plataformatec/devise, 

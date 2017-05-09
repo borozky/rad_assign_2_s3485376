@@ -1,0 +1,135 @@
+
+/*==========================
+SITE FOOTER
+==========================*/
+.site-footer {
+    background-color: #222;
+    color: #ababab;
+    padding-top: 20px;
+
+    .footer-block {
+    	ul {
+    		list-style: none;
+		    padding: 0;
+		    margin: 0;
+
+		    li {
+		    	a {
+		    		color: #dadada;
+		    		font-size: 13px;
+
+		    		&:hover {
+		    			color: #eee;
+		    		}
+		    	}
+		    }
+    	}
+    }
+
+    .footer-bottom {
+    	background: #191919;
+		margin-top: 20px;
+		padding-top: 13px;
+		padding-bottom: 13px;
+		font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 768px){
+	.site-footer {
+		.footer-block {
+			width: auto;
+			min-width: 250px;
+		}
+		.footer-bottom {
+
+		}
+	}
+}
+
+@media screen and (max-width: 480px){
+	.site-footer .row {		
+        max-width: 360px;	
+        margin: 0 auto;
+
+        .footer-block {
+        	margin: 0 auto;
+	        width: 100%;
+	        margin-bottom: 30px;
+        }
+	}
+}
+
+/*==========================
+SOCIAL MEDIA ICONS
+==========================*/
+#SocialMediaLinks {
+	a {
+		&:hover {
+			text-decoration: none;
+			.fa {
+				display: inline;
+			}
+		}
+		.fa {
+			display: none;
+		}
+	}
+
+
+}
+
+/*==========================
+CONTACT FORM
+==========================*/
+#ContactForm {
+	width: 240px;
+
+	table {
+		tr {
+			td {
+				padding: 4px 10px;
+				font-size: 12px;
+
+				&:first-child {
+					padding-left: 0;
+				}
+				input[type=text], textarea {
+					width: 100%;
+					padding: 0px 5px;
+				}
+			}
+		}
+	}
+
+	.form-group {
+		margin-bottom: 0;
+	}
+
+	label {
+		font-weight: normal;
+		font-size: 12px;
+	}
+
+	input.form-control {
+		padding: 0 7px;
+		line-height: 1;
+		height: 27px;
+	}
+}
+
+.block-content {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+@media screen and (max-width: 768px){
+	#ContactForm {
+		width: 100%;
+		max-width: 360px;
+
+		table {
+			width: 100%;
+		}
+	}
+}

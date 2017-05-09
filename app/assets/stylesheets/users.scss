@@ -1,3 +1,158 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+/*==========================
+REGISTRATION AREA
+==========================*/
+#RegistrationArea {
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+    color: #fff;
+    background-color: #435447;
+    font-size: 13px;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+
+    button[type=submit].btn {
+
+    }
+}
+
+#RegistrationArea_left {
+    width: 40%;
+    float: left;
+    padding: 20px;
+    display: none;
+}
+
+#RegistrationArea_right {
+    width: 100%;
+    float: left;
+    background-color: #f5f5f5;
+    color: #000 !important;
+    padding: 10px 20px 20px 20px;
+}
+
+@media screen and (min-width: 641px){
+
+	#RegistrationArea_left {
+		display: block;
+	}
+
+	#RegistrationArea_right {
+		width: 60%;
+	}
+
+}
+
+
+
+/*========================
+USER PROFILE AREA
+========================*/
+#UserShowArea {}
+
+#UserShowArea .user-profile {
+}
+
+#UserShowArea .user-profile .profile-top {
+    padding-left: 95px;
+    position: relative;
+    height: 80px;
+}
+
+#UserShowArea .user-profile .gravatar-image-area {
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 2px;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+}
+
+#UserShowArea .user-profile .user-info {
+    position: absolute;
+    bottom: 0;
+}
+
+#UserShowArea .user-profile .user-info h4 {
+    font-size: 15px;
+}
+
+#UserShowArea .user-profile .user-info h3 {
+    font-size: 22px;
+}
+
+#UserShowArea .user-profile .courses {
+    border-top: 1px solid #ddd;
+    margin-top: 15px;
+    text-align: center;
+}
+
+#UserShowArea .user-profile .gravatar-image-area img {
+    display: inline-block;
+    width: 100%;
+}
+
+@media screen and (min-width: 768px){
+    #UserShowArea .user-profile {
+    }
+
+    #UserShowArea .user-profile .profile-top {
+        padding-left: 165px;
+        position: relative;
+        height: 150px;
+    }
+
+    #UserShowArea .user-profile .gravatar-image-area {
+        display: inline-block;
+        width: 150px;
+        height: 150px;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        padding: 2px;
+        box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+    }
+
+    #UserShowArea .user-profile .user-info {
+        position: absolute;
+        bottom: 0;
+    }
+
+    #UserShowArea .user-profile .user-info h3, #UserShowArea .user-profile .user-info h4 {
+    }
+
+    #UserShowArea .user-profile .courses {
+        border-top: 1px solid #ddd;
+        margin-top: 15px;
+        text-align: left;
+    }
+
+    #UserShowArea .user-profile .gravatar-image-area img {
+        display: inline-block;
+        width: 100%;
+    }
+
+}
+
+/*========================
+USER EDIT AREA
+========================*/
+#UserEditArea {
+    width: 100%;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+    background-color: #f5f5f5;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+
+}
+
+#UserEditArea .entry-title {
+    margin-top: 0.5em;
+}

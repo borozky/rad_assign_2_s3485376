@@ -1,3 +1,13 @@
+<%= content_for :site_banner do %>
+	<div class="site-banner jumbotron">
+		<div class="container">
+			<h1><b>Welcome to myCourse Application<b></h1>
+			<h3>Subtitle goes here</h3>
+			<%= link_to "Sign up now", signup_path, class: "btn btn-lg btn-success" %>
+		</div>
+	</div>
+<% end %>
+
 <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
 

@@ -1,11 +1,25 @@
-<h1>Editing Course</h1>
+<div class="content-block" id="CoursesEditArea">
 
-<%= @editable %>
-current_user: <%= current_user.name %><br>
-created_by: <%= @course.created_by.name %>
+	<h2 class="entry-title">
+		Edit course <span class="course-title"><%= @course.name %></span>
+	</h2>
+
+	<% if @course.errors.any? %>
+		<div class="validation-summary">
+		<ul>
+			<% c@ourse.errors.full_messages.each do |message| %>
+				<li><%= message %></li>
+			<% end %>
+		</ul>
+		</div>
+	<% end %>
+
+	<%= render 'form', course: @course %>
+
+	<p class="actions">
+		<%= link_to 'View course', @course %> | <%= link_to 'Go Back', courses_path %>
+	</p>
+
+</div>
 
 
-<%= render 'form', course: @course %>
-
-<%= link_to 'Show', @course %> |
-<%= link_to 'Back', courses_path %>

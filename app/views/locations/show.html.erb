@@ -1,9 +1,36 @@
-<p id="notice"><%= notice %></p>
+<%= content_for :entry_header do %>
+<div class="entry-header">
+	<div class="container">
+		<h2 class="entry-title">Location: <%= @location.at %></h2>
+	</div>
+</div>
+<% end %>
 
-<p>
-  <strong>At:</strong>
-  <%= @location.at %>
-</p>
 
-<%= link_to 'Edit', edit_location_path(@location) if current_user %> |
-<%= link_to 'Back', locations_path %>
+<div class="content-block" id="LocationsShowArea">
+	<% if @location.courses.size > 0 %>
+
+		<div class="courses-display-settings">
+			<div class="dropdown">
+				<button id="CourseView" class="btn btn-sm btn-default" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					Dropdown trigger <span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu" aria-labelledby="CourseView">
+					<li><a href="#">Grid view</a></li>
+					<li><a href="#">List view</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="courses list-view">
+			<% @location.courses.each do |course| %>
+			<%= render "courses/course", course: course %>
+			<% end %>
+		</div>
+
+	<% else %>
+	<h4>There are no courses assigned to this location</h4>
+	<% end %>
+
+</div>
+
+<p><%= link_to 'Edit', edit_location_path(@location) if current_user %> | <%= link_to 'Back', locations_path %></p>

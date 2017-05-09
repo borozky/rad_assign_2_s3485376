@@ -1,19 +1,23 @@
-<p id="notice"><%= notice %></p>
+<div class="content-block" id="UserShowArea">
+	<div class="user-profile">
+		<div class="profile-top">
+			<div class="gravatar-image-area">
+				<%= image_tag gravatar_image_url(@user.email, 100), alt: "#{@user.email}'s gravatar" %>
+			</div>
+			<div class="user-info">
+				<h3><%= @user.name %></h3>
+				<h4><%= @user.email %></h4>
+			</div>
+		</div>
+		<div class="courses list-view">
 
-<p>
-  <strong>Name:</strong>
-  <%= @user.name %>
-</p>
+			<% @user.courses.each do |course| %>
+			<%= render "courses/course", course: course %>
+			<% end %>
 
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
+		</div>
+	</div>
 
-<p>
-  <strong>Password:</strong>
-  <%= @user.password %>
-</p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+	<p><%= link_to 'Edit', edit_user_path(@user) %> | <%= link_to 'Back', users_path %></p>
+	
+</div>
