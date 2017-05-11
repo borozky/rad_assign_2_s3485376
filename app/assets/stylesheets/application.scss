@@ -1,5 +1,6 @@
-@import "bootstrap";
 @import "bootstrap-sprockets";
+@import "bootstrap";
+
 @import "font-awesome";
 @import "common";
 @import "footer";
@@ -9,6 +10,7 @@
 @import "sessions";
 @import "pages";
 @import "users";
+@import "coordinators";
 @import "courses";
 @import "locations";
 @import "validation";

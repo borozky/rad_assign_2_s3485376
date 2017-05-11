@@ -1,0 +1,32 @@
+.coordinators {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.coordinators .coordinator {
+    display: inline-block;
+    text-align: center;
+    vertical-align: text-bottom;
+    font-size: 13px;
+    width: 100%;
+    max-width: 170px;
+}
+
+.coordinators .coordinator .gravatar-image-parent {
+    display: inline-block; // do not use display:block
+    padding: 3px;
+    -webkit-border-radius: 100%;
+    border-radius: 100%;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.08);
+}
+
+.coordinators .coordinator .gravatar-image-parent img {
+    display: inline-block;
+    -webkit-border-radius: 100%;
+    border-radius: 100%;
+}
+
+.coordinators .coordinator .coordinator-name {
+    display: inline-block;
+    margin: 10px;
+}

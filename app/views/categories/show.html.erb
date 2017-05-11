@@ -6,25 +6,39 @@
 </div>
 <% end %>
 
-<div class="content-block" id="CategoriesIndexArea">
-	<div class="courses-display-settings">
-		<div class="dropdown">
-			<button id="CourseView" class="btn btn-sm btn-default" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				Dropdown trigger <span class="caret"></span>
-			</button>
-			<ul class="dropdown-menu" aria-labelledby="CourseView">
-				<li><a href="#">Grid view</a></li>
-				<li><a href="#">List view</a></li>
-			</ul>
-		</div>
+<div class="content-block" id="CategoriesShowArea">
+  <% if @category.courses.blank? %>
+  	<h4>There are no courses assigned on this category</h4>
+  	
+  	<% if current_user %>
+  		<p><%= link_to "Create new course", new_course_path, class: "btn btn-success" %></p>
+  	<% end %>
+  	
+  <% else %>
+  <ul class="nav nav-pills">
+    <li class="active">
+      <a href="#Courses" data-toggle="tab">Courses</a>
+    </li>
+		<li>
+		  <a href="#Coordinators" data-toggle="tab">Coordinators</a>
+		</li>
+	</ul>
+	
+	<div class="tab-content clearfix">
+	  <div class="tab-pane active" id="Courses">
+	    <div class="courses">
+	        <% @category.courses.each do |course| %>
+	        <%= render "courses/course", course: course %>
+	        <% end %>
+	    </div>
+	  </div>
+	  <div class="tab-pane" id="Coordinators">
+	  	<div class="coordinators">
+	  		<% @category.courses.map(&:user).each do |coordinator| %>
+	        <%= render "users/coordinator", coordinator: coordinator %>
+	        <% end %>
+	  	</div>
+	  </div>
 	</div>
-	<div class="courses list-view">
-		<% @category.courses.each do |course| %>
-		<%= render "courses/course", course: course %>
-		<% end %>
-	</div>
-
-	<p><%= link_to 'Edit', edit_category_path(@category) if current_user  %> | <%= link_to 'Back', categories_path %></p>
+  <% end %>
 </div>
-
-

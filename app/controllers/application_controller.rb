@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
   def authorize
     unless current_user
       session[:original_target] = request.url
-      flash[:notice] = "You must be logged in to view that page"
+      flash[:danger] = "You must be logged in to view that page"
       redirect_to login_url
     end
   end

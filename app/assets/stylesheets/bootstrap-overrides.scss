@@ -39,3 +39,17 @@ JUMBOTRONS
         max-width: 960px;
     }
 }
+
+/*=========================
+NAVPILLS
+==========================*/
+.nav.nav-pills {
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 5px;
+    
+    li {
+        a {
+            border-radius: 0;
+        }
+    }
+}

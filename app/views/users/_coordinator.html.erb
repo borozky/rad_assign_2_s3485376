@@ -1,0 +1,12 @@
+<div class="coordinator">
+    <% if current_user %>
+        <%= link_to user_path(coordinator), class: "gravatar-image-parent" do %>
+            <%= image_tag gravatar_image_url(coordinator.email, 150), alt: coordinator.name, class: "gravatar-image" %>
+        <% end %>
+    <% else %>
+        <span class="gravatar-image-parent">
+            <%= image_tag gravatar_image_url(coordinator.email, 150), alt: coordinator.name, class: "gravatar-image" %>
+        </span>
+    <% end %>
+    <span class="coordinator-name">Coordinator name: <%= coordinator.name %></span>
+</div>

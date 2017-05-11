@@ -1,27 +1,38 @@
-<% content_for :entry_header do %>
-  <div class="entry-header">
-    <div class="container">
-      <h2>All Courses</H2>
-    </div>
-  </div>
-<% end%>
-
-<p id="notice"><%= notice %></p>
-
-<h2>Coordinators</h2>
-<ul>
-  <% @coordinators.each do |c| %>
-    <li><b><%= c.name %></b> (<%= c.email %>)</li>
-  <% end %>
-</ul>
-
-<%= link_to 'New Course', new_course_path if current_user %>
-
 
 <div class="content-block" id="CoursesIndexArea">
-  <div class="courses">
-  <% @courses.each do |course| %>
-  <%= render "course", course: course %>
+  <% if @courses.blank? %>
+    <% if current_user %>
+    <h4>There are no courses available at the moment. Please come back later</h4>
+    <% else %>
+    <h4>There are no courses available</h4>
+    <% end %>
+    <p>
+      <%= link_to "New Course", new_course_path, class: "btn btn-success" if current_user %>
+    </p>
+  <% else %>
+    <ul class="nav nav-pills">
+      <li class="active">
+        <a href="#Courses" data-toggle="tab">Courses</a>
+      </li>
+  		<li>
+  		  <a href="#Coordinators" data-toggle="tab">Coordinators</a>
+  		</li>
+  	</ul><!--end ul.nav.nav-pills-->
+  	<div class="tab-content clearfix">
+  	  <div class="tab-pane active" id="Courses">
+  	    <div class="courses">
+        <% @courses.each do |course| %>
+        <%= render "course", course: course %>
+        <% end %>
+        </div>
+  	  </div>
+  	  <div class="tab-pane" id="Coordinators">
+  	    <div class="coordinators">
+        <%  @courses.map(&:user).uniq.each do |coordinator| %>
+        <%= render "users/coordinator", coordinator: coordinator %>
+        <% end %>
+  	    </div>
+  	  </div>
+  	</div><!--end .tab-content-->
   <% end %>
-  </div>
-</div>
+</div><!--end #CoursesIndexArea.content-block-->

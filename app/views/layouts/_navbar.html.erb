@@ -33,18 +33,22 @@
                       &nbsp;&nbsp;Categories <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu">
-                  <% @categories.each do |category| %>
-                  <li><%= link_to category.name, category_path(category) %></li>
+                  <% if @categories.blank? && !current_user %>
+                    <li class="disabled"><a href="#">No categories available</a></li>
+                  <% else %>
+                    <% @categories.each do |category| %>
+                      <li><%= link_to category.name, category_path(category.id) %></li>
+                    <% end %>
                   <% end %>
-
                   <% if current_user %>
-                  <li role="separator" class="divider"></li>
-                  <li><%= link_to "Create new category", new_category_path %></li>
+                    <% unless @categories.blank? %>
+                      <li role="separator" class="divider"></li>
+                    <% end %>
+                    <li><%= link_to "Create new category", new_category_path %></li>
                   <% end %>
-
                 </ul>
               </li><!-- end .dropdown -->
-
+              
               <li class="dropdown">
                 <a  href="#" 
                     class="dropdown-toggle" 
@@ -57,20 +61,28 @@
                     >&nbsp;&nbsp;Locations <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu">
-
-                  <% @locations.each do |location| %>
-                    <li><%= link_to location.at, location_path(location.id) %></li>
+                  <% if @locations.blank? && !current_user  %>
+                    <li class="disabled"><a href="#">No locations available</a></li>
+                    <% else %>
+                    <% @locations.each do |location| %>
+                      <li><%= link_to location.at, location_path(location.id) %></li>
+                    <% end %>
                   <% end %>
-
                   <% if current_user %>
-                    <li role="separator" class="divider"></li>
+                    <% unless @locations.blank? %>
+                      <li role="separator" class="divider"></li>
+                    <% end %>
                     <li><%= link_to "Create new location", new_location_path %></li>
                   <% end %>
-
                 </ul>
               </li><!-- end .dropdown -->
 
               <% if current_user %>
+                <li>
+                  <%= link_to new_course_path, id: "CreateNewCourse" do %>
+                  <i class="fa fa-plus"></i>&nbsp;&nbsp;New course
+                </li>
+              <% end %>
                 <li class="dropdown profile-menu">
                   <a href="#" 
                     class="dropdown-toggle" 

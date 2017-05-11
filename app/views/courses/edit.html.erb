@@ -7,7 +7,7 @@
 	<% if @course.errors.any? %>
 		<div class="validation-summary">
 		<ul>
-			<% c@ourse.errors.full_messages.each do |message| %>
+			<% @course.errors.full_messages.each do |message| %>
 				<li><%= message %></li>
 			<% end %>
 		</ul>

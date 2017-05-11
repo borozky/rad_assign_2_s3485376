@@ -11,13 +11,7 @@
 		<%= # no resource is modified when logging in, so use form_tag() instead of form_for()
 		form_tag login_path do  %>
 			<h3>Login</h3>
-			<h4>Please login to access this content</h4>
-
-			<% if flash%>
-				<% flash.each do |name, message| %>
-					<%= content_tag :p, message, class: "alert alert-" + name %>
-				<% end %>
-			<% end %>
+			<h4>Please login to access this system</h4>
 
 			<div class="form-group">
 				<%= label_tag :email %>

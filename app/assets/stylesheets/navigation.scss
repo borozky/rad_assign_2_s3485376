@@ -13,3 +13,12 @@ NAVIGATION
 .navbar {
     margin-bottom: 0;
 }
+
+#CreateNewCourse {
+    background-color: #06651b;
+    color: #e0e0e0;
+    
+    &:hover {
+        color: #fff;
+    }
+}

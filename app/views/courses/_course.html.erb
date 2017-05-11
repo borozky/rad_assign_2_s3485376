@@ -1,37 +1,36 @@
 <div class="course-item<%= !course.image.nil? ? " has-image" : "" %>">
-
-  <div class="course-banner">
-    <%= image_tag course.image, alt: course.name, class: "course-image" %>
-    <div class="course-title-parent">
-      <h4 class="course-title"><%= link_to course.name, course_path(course) %></h4>
-    </div>
-  </div>
-
-  <div class="course-meta">
-    <h4 class="course-title"><%= link_to course.name, course_path(course) %></h4>
-
-    <p class="course-prerequisites">
-      <b>Prerequisites:</b> <%= course.prerequisite %>
-    </p>
-
-    <p class="course-location">
-      <b>Location:</b> 
-      <% course.locations.each do |location| %>
-      <%= link_to location.at, location_path(location) %>
-      <% end %>
-    </p>
-
-    <p class="course-coordinator">
-      <%= image_tag gravatar_image_url(course.user.email), class: "course-coordinator-gravatar" %>
-      <b>Course coordinator:</b><br><%= link_to course.user.name, user_path(course.user) %>
-    </p>
-
-    <p class="course-datecreated">
-      <small><b>Date created:</b> <%= time_ago_in_words(course.created_at) %></small>
-    </p>
-  </div>
-
-  <div class="course-actions clearfix">
+  <div class="course-image-parent">
+    <%= image_tag course.image, alt: course.name, class: "course-image" unless course.image.blank? %>
+	</div>
+	<div class="course-details">
+		<h1 class="course-title"><%= link_to course.name, course_path(course) %></h1>
+		<p class="course-meta">
+			<b>Course Prerequisites:</b> <span class="course-prerequisites"><%= course.prerequisite %></span><br>
+			<b>Category:</b> <span class="course-categories">
+			  <% course.categories.each do |category| %>
+			  <%= link_to category.name, category_path(category) %>
+			  <% end %>
+			</span><br>
+			<b>Location:</b> <span class="course-locations">
+			  <% course.locations.each do |location| %>
+			  <%= link_to location.at, location_path(location) %>
+			  <% end %>
+			  </span><br>
+		</p>
+		<p class="course-coordinator">
+			<b>Course coordinator</b>:<br>
+			<span class="coordinator-name"><%= course.user.name %></span>
+			<span class="coordinator-avatar-parent">
+			  <%= image_tag gravatar_image_url(course.user.email), alt: "#{course.user.name} gravatar", class: "coordinator-gravatar" %>
+			</span>
+		</p>
+		<p>
+			<small>
+				<b>Date created:</b><span class="course-datecreated"> <%= time_ago_in_words(course.created_at) %></span>
+			</small>
+		</p>
+	</div>
+	<div class="course-actions clearfix">
     <% if current_user %>
       <span class="vote">
 
@@ -55,4 +54,5 @@
       <%= link_to "View course", course_path(course), class: "btn btn-sm btn-info" %>
     </span>
   </div>
-</div><!-- end .course-item -->
+</div>
+
