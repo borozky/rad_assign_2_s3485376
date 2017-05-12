@@ -3,7 +3,7 @@
 <div class="content-block" id="CourseShowArea">
   <div class="course">
 
-    <%= link_to edit_course_path(@course), class: "edit-course btn btn-sm btn-success" do %>
+    <%= link_to edit_course_path(@course), class: "edit-course btn btn-sm btn-info" do %>
     <i class="fa fa-edit"></i> &nbsp;Edit this course
     <% end if current_user %>
 
@@ -17,11 +17,11 @@
 
       <% if current_user %>
         <span class="vote">
-          <%= link_to course_vote_path(@course.id, id: @course.id, vote: true), method: :post, class: "vote-up btn" do %>
-            <i class="fa fa-thumbs-up"></i> <span class="votes">0</span>
+          <%= link_to course_vote_path(@course.id, id: @course.id, vote: true), method: :post, class: "vote-up btn btn-sm btn-success" do %>
+            <i class="fa fa-thumbs-up"></i> <span class="votes"><%= @course.votes.select{ |v| v.thumbs_up }.size %></span>
           <% end %>
-          <%= link_to course_vote_path(@course.id, id: @course.id, vote: false), method: :post, class: "vote-up btn" do %>
-            <i class="fa fa-thumbs-down"></i> <span class="votes">0</span>
+          <%= link_to course_vote_path(@course.id, id: @course.id, vote: false), method: :post, class: "vote-up btn btn-sm btn-danger" do %>
+            <i class="fa fa-thumbs-down"></i> <span class="votes"><%= @course.votes.select{ |v| v.thumbs_up == false }.size %></span>
           <% end %>
         </span>
       <% end %>
@@ -61,19 +61,19 @@
     </div><!-- end .course-meta -->
 
     <div class="course-description">
-      <%= @course.description %>
+      <%= simple_format(@course.description) %>
     </div>
 
     <div class="course-actions clearfix">
       <%= link_to "Return to course list", courses_path %>
 
       <% if current_user %>
-        <span class="vote">
-          <%= link_to course_vote_path(@course.id, id: @course.id, vote: true), method: :post, class: "vote-up btn" do %>
-            <i class="fa fa-thumbs-up"></i> <span class="votes">0</span>
+        <span class="vote pull-right">
+          <%= link_to course_vote_path(@course.id, id: @course.id, vote: true), method: :post, class: "vote-up btn btn-sm btn-success" do %>
+            <i class="fa fa-thumbs-up"></i> <span class="votes"><%= @course.votes.select{ |v| v.thumbs_up }.size %></span>
           <% end %>
-          <%= link_to course_vote_path(@course.id, id: @course.id, vote: false), method: :post, class: "vote-up btn" do %>
-            <i class="fa fa-thumbs-down"></i> <span class="votes">0</span>
+          <%= link_to course_vote_path(@course.id, id: @course.id, vote: false), method: :post, class: "vote-up btn btn-sm btn-danger" do %>
+            <i class="fa fa-thumbs-down"></i> <span class="votes"><%= @course.votes.select{ |v| v.thumbs_up == false }.size %></span>
           <% end %>
         </span>
       <% end %>

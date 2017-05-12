@@ -36,14 +36,16 @@ class CoursesController < ApplicationController
     end
 
     @vote = Vote.new
-    @vote.user = current_user
+    @vote.voter = current_user
     @vote.course = @course
     @vote.thumbs_up = params[:vote]
 
     if @vote.save
-      render json: { message: "Success" }, status: :created
+      flash[:success] = "Successfully votes for this course"
+      redirect_to :back
     else
-      render json: @vote.errors, status: :unprocessable_entity
+      flash[:danger] = @vote.errors.values.first.join(',')
+      redirect_to :back
     end
 
   end

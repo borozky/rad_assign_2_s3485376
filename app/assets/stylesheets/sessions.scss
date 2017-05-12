@@ -14,13 +14,10 @@ LOGIN AREA
     font-size: 13px;
     box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
 
-    button[type=submit].btn {
-
+    button[type=submit].btn,
+    input[type=submit].btn {
+        padding: 7px 48px;
     }
-}
-
-#LoginArea button[type=submit].btn {
-
 }
 
 #LoginArea_left {

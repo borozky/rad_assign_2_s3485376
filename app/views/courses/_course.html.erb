@@ -6,6 +6,8 @@
 		<h1 class="course-title"><%= link_to course.name, course_path(course) %></h1>
 		<p class="course-meta">
 			<b>Course Prerequisites:</b> <span class="course-prerequisites"><%= course.prerequisite %></span><br>
+			
+			<% if current_user && current_user.id != course.user.id %>
 			<b>Category:</b> <span class="course-categories">
 			  <% course.categories.each do |category| %>
 			  <%= link_to category.name, category_path(category) %>
@@ -16,6 +18,8 @@
 			  <%= link_to location.at, location_path(location) %>
 			  <% end %>
 			  </span><br>
+			<% end %>
+			  
 		</p>
 		<p class="course-coordinator">
 			<b>Course coordinator</b>:<br>
@@ -29,28 +33,24 @@
 				<b>Date created:</b><span class="course-datecreated"> <%= time_ago_in_words(course.created_at) %></span>
 			</small>
 		</p>
+		<p class="vote">
+    <% if current_user %>
+        <%= link_to course_vote_path(course.id, id: course.id, vote: true), class: "btn btn-xs btn-success", method: :post do %>
+          <i class="fa fa-thumbs-up"></i>
+          <span class="thumbs-up-votes"><%= course.votes.select{ |v| v.thumbs_up }.size %></span>
+        <% end %>
+
+        <%= link_to course_vote_path(course.id, id: course.id, vote: false), class: "btn btn-xs btn-danger", method: :post do %>
+          <i class="fa fa-thumbs-down"></i>
+          <span class="thumbs-down-votes"><%= course.votes.select{ |v| v.thumbs_up == false }.size %></span>
+        <% end %>
+    <% end %>
+		</p>
 	</div>
 	<div class="course-actions clearfix">
-    <% if current_user %>
-      <span class="vote">
-
-          <!-- TODO: Code for number of upvotes -->
-        <%= link_to course_vote_path(course.id, id: course.id, vote: true), method: :post do %>
-          <i class="fa fa-thumbs-up"></i>
-          <span class="thumbs-up-votes">0</span>
-        <% end %>
-
-        <!-- TODO: Code for number of downvotes -->
-        <%= link_to course_vote_path(course.id, id: course.id, vote: false), method: :post do %>
-          <i class="fa fa-thumbs-down"></i>
-          <span class="thumbs-down-votes">0</span>
-        <% end %>
-
-      </span>
-    <% end %>
 
     <span class="edit-view">
-      <%= link_to "Edit", edit_course_path(course) if course_editable?(course) %>
+      <%= link_to "Edit", edit_course_path(course), class: "btn btn-sm btn-default" if course_editable?(course) %>
       <%= link_to "View course", course_path(course), class: "btn btn-sm btn-info" %>
     </span>
   </div>

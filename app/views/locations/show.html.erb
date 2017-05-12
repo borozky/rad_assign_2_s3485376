@@ -2,6 +2,7 @@
 <div class="entry-header">
 	<div class="container">
 		<h2 class="entry-title">Location: <%= @location.at %></h2>
+		<h4><span id="EntryHeaderTitle"><%= "all courses scheduled in #{@location.at}" %></span></h4>
 	</div>
 </div>
 <% end %>
@@ -9,7 +10,7 @@
 <div class="content-block" id="LocationsShowArea">
   <% if @location.courses.blank? %>
   	<h4>There are no courses assigned at this location</h4>
-    <p>TODO: CREATE NEW COURSE AT THIS LOCATION</p>
+    <p><%= link_to "Create new course", new_course_path, class: "btn btn-success" %></p>
   <% else %>
   <ul class="nav nav-pills">
     <li class="active">
@@ -29,7 +30,11 @@
 	    </div>
 	  </div>
 	  <div class="tab-pane" id="Coordinators">
-	    TODO: COORDINATORS FOR COURSES IN THIS LOCATION
+	  	<div class="coordinators">
+		  	<% @location.courses.map(&:user).uniq.each do |coordinator| %>
+	      <%= render "users/coordinator", coordinator: coordinator %>
+	      <% end %>
+	  	</div>
 	  </div>
 	</div>
   <% end %>

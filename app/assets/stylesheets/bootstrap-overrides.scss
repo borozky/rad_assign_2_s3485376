@@ -13,17 +13,27 @@ FLASH MESSAGES with bootstrap alerts
     border-radius: 0;
     box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
 
-    .alert-success {
 
+    &.alert-success {
+        border: none;
+        color: #fff;
+        background-color: #5cb85c;
+        border: none;
     }
-    .alert-info {
-
+    &.alert-info {
+        background-color: #5bc0de;
+        color: #fff;
+        border: none;
     }
-    .alert-warning {
-
+    &.alert-warning {
+        background-color: #f0ad4e;
+        color: #fff;
+        border: none;
     }
-    .alert-danger {
-
+    &.alert-danger {
+        background-color: #d9534f;
+        color: #fff;
+        border: none;
     }
 }
 
