@@ -1,11 +1,56 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  email: MyString
-  password_digest: MyString
+  name:
+  email:
+  password:
 
 two:
-  name: MyString
-  email: MyString
-  password_digest: MyString
+  name: 
+  email: "no.name@rmit.edu.au"
+  password_digest: "123qweASD!@#"
+  
+three:
+  name: "no email"
+  email:
+  password: "123qweasd!@#"
+
+four:
+  name: "no password"
+  email: "no.name@rmit.edu.au"
+  password: 
+
+five:
+  name: "e j"
+  email: "veryshort.name@rmit.edu"
+  password: "123qweasd!@#"
+  
+six:
+  name: "short"
+  email: "s@e.au"
+  password: "123qweASD!@#"
+
+seven:
+  name: "joshua orozco"
+  email: "joshua.orozco"
+  password: "123qweASD!@#"
+  
+eight:
+  name: "Andy Song"
+  email: "andy.song@rmit.edu.au"
+  password: "123qweASD!@#"
+  
+nine:
+  name: "SomeoneWith InvalidPassword"
+  email: "someonewith.invalidpassword@rmit.edu.au"
+  password: "someonewithinvalidpassword"
+  
+ten:
+  name: "someonewith nonrmitemail"
+  email: "someonewith.invalidemail@gmail.com"
+  password: "890iopJKL*()"
+
+
+  
+  
+  

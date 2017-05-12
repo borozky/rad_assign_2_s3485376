@@ -1,7 +1,19 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  at: MyString
+  at: "12.06.10"
 
 two:
-  at: MyString
+  at: "106.23.67"
+  
+three:
+  at:
+  
+four:
+  at: "00000000"
+  
+five:
+  at: "123.56"
+
+six:
+  at: "123"

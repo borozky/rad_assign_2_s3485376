@@ -2,10 +2,20 @@
 
 one:
   thumbs_up: false
-  user: 
+  voter: one
   course: 
 
 two:
+  thumbs_up: true
+  user: one
+  course: one
+  
+three:
   thumbs_up: false
-  user: 
-  course: 
+  user: one
+  course: one
+  
+four:
+  thumbs_up: true
+  user: two
+  course: two

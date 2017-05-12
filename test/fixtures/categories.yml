@@ -1,7 +1,16 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
+  name: nil
 
 two:
-  name: MyString
+  name: " "
+
+three:
+  name: "valid"
+  
+four:
+  name: "-------"
+  
+five:
+  name: 000000000

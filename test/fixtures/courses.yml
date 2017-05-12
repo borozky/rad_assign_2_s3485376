@@ -1,15 +1,63 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  description: MyString
-  prerequisite: MyString
+  name: "Database Concepts"
+  description: "This is the description of database concept. It is a course about SQL and RDBMS"
+  prerequisite: "Basic computer literacy"
   locations: one
   categories: one
 
 two:
-  name: MyString
-  description: MyString
-  prerequisite: MyString
+  name: "Rapid Application Development"
+  description: "Nulla dignissim leo a purus commodo, nec facilisis nibh vulputate."
+  prerequisite: "Web Programming"
   locations: two
   categories: two
+  
+three:
+  name: "Short"
+  description: "Nulla dignissim leo a purus commodo, nec facilisis nibh vulputate."
+  prerequisite: "Web Programming"
+  locations: two
+  categories: two
+  
+four:
+  name: "Course with short description"
+  description: "blah blah blah!"
+  prerequisite: "Web Programming"
+  locations: two
+  categories: two
+  
+five:
+  name: 
+  description: "Description of the course with no name"
+  prerequisite: "Web Programming"
+  locations: one
+  categories: two
+  
+six:
+  name: "name of the course with short prerequisite"
+  description: "Description of the course with short prerequisite"
+  prerequisite: "Web"
+  locations: two
+  categories: one
+  
+seven:
+  name: "name of the course with no description"
+  description: 
+  prerequisite: "Web Programming"
+  locations: two
+  categories: one
+  
+eight:
+  name: "name of the course with no prerequisite"
+  description: "Description of the course with no prerequisite"
+  prerequisite:
+  locations: two
+  categories: one
+  
+
+  
+
+  
+
