@@ -12,7 +12,7 @@
             </tr>
             <tr>
               <td><label for="#">Email</label></td>
-              <td><input type="text" placeholder="name"></td>
+              <td><input type="text" placeholder="email"></td>
             </tr>
             <tr>
               <td><label for="#">Message</label></td>
@@ -34,9 +34,9 @@
 
         <h4>Useful Links</h4>
         <ul>
-          <li><a href="#">RMIT Course</a></li>
-          <li><a href="#">RMIT Help Desk</a></li>
-          <li><a href="#">RMIT International</a></li>
+          <li><%= link_to "RMIT Courses", "https://www.rmit.edu.au/study-with-us" %></li>
+          <li><%= link_to "RMIT Help Desk", "http://www1.rmit.edu.au/students/it/support" %></li>
+          <li><%= link_to "RMIT International", "https://www.rmit.edu.au/study-with-us/international-students" %></li>
         </ul>
       </div><!-- end .footer-block -->
 
@@ -45,7 +45,15 @@
         <ul id="SocialMediaLinks">
           <li><a href="#">
           <i class="fa fa-youtube"></i> &nbsp;YouTube</a></li>
-          <li><a href="#"><i class="fa fa-twitter"></i> &nbsp;Twitter</a></li>
+          <li>
+            <%= link_to "https://www.facebook.com/RMITuniversity/" do %>
+              <i class="fa fa-facebook"></i> &nbsp;Facebook</a>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to "" %>
+          </li>
+          <li><a href="#"></li>
           <li><a href="#"><i class="fa fa-facebook"></i>  &nbsp;Facebook</a></li>
           <li><a href="#"><i class="fa fa-instagram"></i> &nbsp;Instagram</a></li>
           <li><a href="#"><i class="fa fa-skype"></i> &nbsp;Skype</a></li>

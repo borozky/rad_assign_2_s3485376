@@ -7,7 +7,7 @@
 		<p class="course-meta">
 			<b>Course Prerequisites:</b> <span class="course-prerequisites"><%= course.prerequisite %></span><br>
 			
-			<% if current_user && current_user.id != course.user.id %>
+			<% unless current_page?(controller: "users") && current_user.id != course.user.id %>
 			<b>Category:</b> <span class="course-categories">
 			  <% course.categories.each do |category| %>
 			  <%= link_to category.name, category_path(category) %>

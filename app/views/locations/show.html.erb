@@ -3,6 +3,7 @@
 	<div class="container">
 		<h2 class="entry-title">Location: <%= @location.at %></h2>
 		<h4><span id="EntryHeaderTitle"><%= "all courses scheduled in #{@location.at}" %></span></h4>
+		<%= link_to "Edit location", edit_location_path(@location), class: "btn btn-sm btn-success"%>
 	</div>
 </div>
 <% end %>

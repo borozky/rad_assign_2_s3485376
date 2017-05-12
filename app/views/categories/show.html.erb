@@ -3,6 +3,7 @@
 	<div class="container">
 		<h2 class="entry-title">Category: <%= @category.name %></h2>
 		<h4><span id="EntryHeaderTitle"><%= "all courses under category \"#{@category.name}\"" %></span></h4>
+		<%= link_to "Edit this category", edit_category_path(@category), class: "btn btn-sm btn-success"%>
 	</div>
 </div>
 <% end %>

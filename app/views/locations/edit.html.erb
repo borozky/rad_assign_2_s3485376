@@ -1,6 +1,19 @@
-<h1>Editing Location</h1>
 
-<%= render 'form', location: @location if current_user %>
 
-<%= link_to 'Show', @location %> |
-<%= link_to 'Back', locations_path %>
+<div class="content-block" id="LocationsEditArea">
+    
+    <h2>Edit location: <%= @location.at %></h2>
+    
+    <% if @location.errors.any? %>
+		<div class="validation-summary">
+		<ul>
+			<% @location.errors.full_messages.each do |message| %>
+				<li><%= message %></li>
+			<% end %>
+		</ul>
+		</div>
+	<% end %>
+	
+	<%= render 'form', location: @location if current_user %>
+	
+</div>
