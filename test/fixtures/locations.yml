@@ -1,19 +1,19 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+valid_location1:
   at: "12.06.10"
 
-two:
+valid_location2:
   at: "106.23.67"
   
-three:
+location_no_details:
   at:
   
-four:
+location_all_zeros:
   at: "00000000"
   
-five:
+location_incomplete:
   at: "123.56"
 
-six:
+location_no_dot:
   at: "123"

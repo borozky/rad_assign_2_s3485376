@@ -1,60 +1,60 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+valid_course1:
   name: "Database Concepts"
   description: "This is the description of database concept. It is a course about SQL and RDBMS"
   prerequisite: "Basic computer literacy"
-  locations: one
-  categories: one
+  locations: valid_location1
+  categories: category_valid
 
-two:
+valid_course2:
   name: "Rapid Application Development"
   description: "Nulla dignissim leo a purus commodo, nec facilisis nibh vulputate."
   prerequisite: "Web Programming"
-  locations: two
-  categories: two
+  locations: valid_location2
+  categories: category_valid
   
-three:
+course_short_name:
   name: "Short"
   description: "Nulla dignissim leo a purus commodo, nec facilisis nibh vulputate."
   prerequisite: "Web Programming"
-  locations: two
-  categories: two
+  locations: valid_location2
+  categories: valid_location2
   
-four:
+course_short_description:
   name: "Course with short description"
   description: "blah blah blah!"
   prerequisite: "Web Programming"
-  locations: two
-  categories: two
+  locations: valid_location2
+  categories: valid_location2
   
-five:
+course_no_name:
   name: 
   description: "Description of the course with no name"
   prerequisite: "Web Programming"
-  locations: one
-  categories: two
+  locations: category_valid
+  categories: valid_location2
   
-six:
+course_short_prerequisite:
   name: "name of the course with short prerequisite"
   description: "Description of the course with short prerequisite"
   prerequisite: "Web"
-  locations: two
-  categories: one
+  locations: valid_location2
+  categories: category_valid
   
-seven:
+course_no_description:
   name: "name of the course with no description"
   description: 
   prerequisite: "Web Programming"
-  locations: two
-  categories: one
+  locations: valid_location2
+  categories: category_valid
   
-eight:
+course_no_prerequisite:
   name: "name of the course with no prerequisite"
   description: "Description of the course with no prerequisite"
   prerequisite:
-  locations: two
-  categories: one
+  locations: valid_location2
+  categories: category_valid
   
 
   

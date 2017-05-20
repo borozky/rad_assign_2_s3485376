@@ -1,54 +1,54 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+user_no_info:
   name:
   email:
-  password:
+  password_digest:
 
-two:
+user_no_name:
   name: 
   email: "no.name@rmit.edu.au"
   password_digest: "123qweASD!@#"
   
-three:
+user_no_email:
   name: "no email"
   email:
-  password: "123qweasd!@#"
+  password_digest: "123qweasd!@#"
 
-four:
+user_no_password:
   name: "no password"
   email: "no.name@rmit.edu.au"
-  password: 
+  password_digest: 
 
-five:
+user_short_name:
   name: "e j"
   email: "veryshort.name@rmit.edu"
-  password: "123qweasd!@#"
+  password_digest: "123qweasd!@#"
   
-six:
+user_short_email:
   name: "short"
   email: "s@e.au"
-  password: "123qweASD!@#"
+  password_digest: "123qweASD!@#"
 
-seven:
+user_invalid_email:
   name: "joshua orozco"
   email: "joshua.orozco"
-  password: "123qweASD!@#"
+  password_digest: "123qweASD!@#"
   
-eight:
+valid_user1:
   name: "Andy Song"
   email: "andy.song@rmit.edu.au"
-  password: "123qweASD!@#"
+  password_digest: "123qweASD!@#"
   
-nine:
+user_invalid_password:
   name: "SomeoneWith InvalidPassword"
   email: "someonewith.invalidpassword@rmit.edu.au"
-  password: "someonewithinvalidpassword"
+  password_digest: "someonewithinvalidpassword"
   
-ten:
+user_nonrmit_email:
   name: "someonewith nonrmitemail"
   email: "someonewith.invalidemail@gmail.com"
-  password: "890iopJKL*()"
+  password_digest: "890iopJKL*()"
 
 
   

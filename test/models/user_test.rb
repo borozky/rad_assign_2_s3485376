@@ -1,7 +1,11 @@
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  
+  test "user with no details cannot be saved" do
+    @user = User.new
+    assert_not @user.save
+  end
+  
+  
 end

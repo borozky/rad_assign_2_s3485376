@@ -1,16 +1,16 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+category_nil:
   name: nil
 
-two:
+category_whitespace:
   name: " "
 
-three:
+category_valid:
   name: "valid"
   
-four:
+category_all_minus:
   name: "-------"
   
-five:
+category_all_zeroes:
   name: 000000000

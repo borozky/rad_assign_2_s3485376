@@ -2,10 +2,10 @@
 
 one:
   thumbs_up: false
-  user: <%= Fixtures.identify(:one) %>
-  course: <%= Fixtures.identify(:one) %>
+  voter: valid_user1
+  course: valid_course1 
 
 two:
   thumbs_up: true
-  user: <%= Fixtures.identify(:two) %>
-  course: <%=  Fixtures.identify(:two) %>
+  voter: valid_user1
+  course: valid_course2
