@@ -5,3 +5,16 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+# disable password validation for admin
+User.create(name: "admin", email: "admin@sciencecourses.rmit.edu.au", password: "password", role: "admin").on(validate: false)
+
+User.create([
+    {
+        name: "Joshua Orozco",
+        email: "joshua.orozco@rmit.edu.au",
+        password: "123qweASD!@#",
+        role: nil
+    }
+])

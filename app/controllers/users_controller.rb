@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_action :authorize, only: [:index, :edit, :update, :destroy]
+  before_action :authorize, only: [:edit, :update]
+  before_action :authorize_admin, only: [:index, :destroy]
   
   # GET /users
   def index
@@ -53,6 +54,9 @@ class UsersController < ApplicationController
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
+    
+    return forbidden if current_admin && @user.role == "admin"
+    
     @user.destroy
     respond_to do |format|
       format.html { redirect_to users_url, success: 'User was successfully destroyed.' }

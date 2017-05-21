@@ -2,6 +2,7 @@ class CoursesController < ApplicationController
   before_action :set_course, only: [:show, :edit, :update, :destroy, :vote]
   before_action :authorize, except: [:index, :show]
   before_action :can_edit_course?, only: [:edit, :update, :destroy]
+  before_action :authorize_admin, only: [:reset_votes]
   
   # GET /courses
   # GET /courses.json
@@ -13,6 +14,7 @@ class CoursesController < ApplicationController
     end
     @title = "All Courses"
   end
+  
 
   # GET /courses/1
   # GET /courses/1.json
@@ -41,13 +43,31 @@ class CoursesController < ApplicationController
     @vote.thumbs_up = params[:vote]
 
     if @vote.save
-      flash[:success] = "Successfully votes for this course"
+      flash[:success] = "Successfully voted for this course"
       redirect_to :back
     else
       flash[:danger] = @vote.errors.values.first.join(',')
       redirect_to :back
     end
 
+  end
+  
+  def reset_votes
+    @course = Course.find(params[:course_id])
+    @course.vote_resets += 1;
+    @course.last_vote_reset = Time.now
+    
+    respond_to do |format|
+      if @course.save
+        flash[:success] = "Votes for this course has successfully reset"
+        format.html { redirect_to @course, success: 'Votes for this course has successfully reset' }
+        format.json { render :show, status: :created, location: @course }
+      else
+        flash[:danger] = "Votes for this course failed to reset"
+        format.html { render :new }
+        format.json { render json: @course.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   # POST /courses
@@ -60,6 +80,7 @@ class CoursesController < ApplicationController
 
     respond_to do |format|
       if @course.save
+        flash[:success] = "Course successfully created" 
         format.html { redirect_to @course, success: 'Course was successfully created.' }
         format.json { render :show, status: :created, location: @course }
       else
@@ -74,11 +95,28 @@ class CoursesController < ApplicationController
   def update
     respond_to do |format|
       if @course.update(course_params)
+        flash[:success] = "Course successfully updated"
         format.html { redirect_to @course, success: 'Course was successfully updated.' }
         format.json { render :show, status: :ok, location: @course }
       else
+        flash[:danger] = "Failed to update course"
         format.html { render :edit }
         format.json { render json: @course.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+  
+  # DELETE /users/1
+  # DELETE /users/1.json
+  def destroy
+    
+    return forbidden if !current_admin
+    
+    if @course.destroy
+      respond_to do |format|
+        flash[:success] = "Course successfully deleted"
+        format.html { redirect_to courses_url, success: 'Course was successfully destroyed.' }
+        format.json { head :no_content }
       end
     end
   end
@@ -89,6 +127,12 @@ class CoursesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_course
       @course = Course.find(params[:id])
+      
+      votes = @course.votes.select do |vote|
+        vote.created_at > @course.last_vote_reset
+      end
+      
+      @course.votes = votes
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
@@ -97,8 +141,16 @@ class CoursesController < ApplicationController
     end
 
     def can_edit_course?
+      if current_admin
+        return true
+      end
+      
       unless @course.user.id == current_user.id
         render "forbidden"
       end
+    end
+    
+    def can_delete_course?
+       return true if current_admin
     end
 end

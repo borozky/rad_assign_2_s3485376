@@ -3,10 +3,17 @@ class SessionsController < ApplicationController
   end
 
   def create
-    # login as admin
-    user = User.find_by_email(params[:email])
+    # login as admin or normal user
+    if params[:email] == "admin"
+      user = User.find_by_role("admin")
+    else
+      user = User.find_by_email(params[:email])
+    end
+    
   	if user && user.authenticate(params[:password])
   		session[:user_id] = user.id
+  		session[:role] = user.role
+  		
   		flash[:success] = "You have successfully logged in"
   		redirect_to root_url
   	else
