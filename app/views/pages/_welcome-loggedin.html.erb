@@ -1,0 +1,21 @@
+<div class="row clearfix">
+	<div class="col-xs-12 col-sm-6">
+		
+		<h2>View all courses</h2>
+		<p>Update your courses, rate courses and view course information</p>
+		<p>
+			<%= link_to user_path(current_user), class:"btn btn-success" do %>
+			<span class="fa fa-login"></span> Login to your account
+			<% end %>
+		</p>
+	</div>
+	<div class="col-xs-12 col-sm-6">
+		<h2>View Courses as Guest User</h2>
+		<p>Browse and view courses as a guest and signup later</p>
+		<p>
+			<%= link_to courses_path, class:"btn btn-success" do %>
+			<span class="fa fa-book"></span> Browse all courses
+			<% end %>
+		</p>
+	</div>
+</div>

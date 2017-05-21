@@ -33,25 +33,53 @@
 				<b>Date created:</b><span class="course-datecreated"> <%= time_ago_in_words(course.created_at) %></span>
 			</small>
 		</p>
-		<p class="vote">
-    <% if current_user %>
-        <%= link_to course_vote_path(course.id, id: course.id, vote: true), class: "btn btn-xs btn-success", method: :post do %>
-          <i class="fa fa-thumbs-up"></i>
-          <span class="thumbs-up-votes"><%= course.votes.select{ |v| v.thumbs_up }.size %></span>
-        <% end %>
-
-        <%= link_to course_vote_path(course.id, id: course.id, vote: false), class: "btn btn-xs btn-danger", method: :post do %>
-          <i class="fa fa-thumbs-down"></i>
-          <span class="thumbs-down-votes"><%= course.votes.select{ |v| v.thumbs_up == false }.size %></span>
-        <% end %>
+		<% if current_user %>
+			<div class="course-options">
+				<div class="dropdown">
+				  <button class="btn btn-xs btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+				    Options
+				    <span class="caret"></span>
+				  </button>
+				  <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
+				    <li>
+				    	<%= link_to course_resetvotes_path(course), method: :post do %>
+				    		<i class="fa fa-undo"></i>&nbsp; Reset votes
+				    	<% end if current_admin%>
+				    </li>
+				    <li>
+				    	<%= link_to course_path(course), method: :delete do %>
+				    		<i class="fa fa-times"></i>&nbsp; Delete course
+				    	<% end if current_admin %>
+				    </li>
+				    <li>
+				    	<%= link_to edit_course_path(course) do %>
+				    		<i class="fa fa-pencil"></i>&nbsp; Edit course
+				    	<% end if course_editable?(course)%>
+				    </li>
+				    <li>
+				    	<%= link_to course_path(course) do %>
+				    		<i class="fa fa-eye"></i>&nbsp; View course
+				    	<% end %>
+				    </li>
+				  </ul>
+				</div>
+			</div>
     <% end %>
-		</p>
 	</div>
 	<div class="course-actions clearfix">
 
     <span class="edit-view">
-      <%= link_to "Edit", edit_course_path(course), class: "btn btn-sm btn-default" if course_editable?(course) %>
-      <%= link_to "View course", course_path(course), class: "btn btn-sm btn-info" %>
+    	<% if current_user %>
+	      <%= link_to course_vote_path(course.id, id: course.id, vote: true), class: "btn btn-sm btn-success", method: :post do %>
+	        <i class="fa fa-thumbs-up"></i>
+	        <span class="thumbs-up-votes"><%= course.votes.select{ |v| v.thumbs_up }.size %></span>
+	      <% end %>
+	
+	      <%= link_to course_vote_path(course.id, id: course.id, vote: false), class: "btn btn-sm btn-danger", method: :post do %>
+	        <i class="fa fa-thumbs-down"></i>
+	        <span class="thumbs-down-votes"><%= course.votes.select{ |v| v.thumbs_up == false }.size %></span>
+	      <% end %>
+      <% end %>
     </span>
   </div>
 </div>

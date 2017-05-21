@@ -1,6 +1,6 @@
 <div class="content-block" id="UserShowArea">
 	<div class="user-profile">
-		<div class="profile-top">
+		<div class="profile-top clearfix">
 			<div class="gravatar-image-area">
 				<%= image_tag gravatar_image_url(@user.email, 100), alt: "#{@user.email}'s gravatar" %>
 			</div>
@@ -8,10 +8,21 @@
 				<h3><%= @user.name %></h3>
 				<h4><%= @user.email %></h4>
 			</div>
+			<%= link_to user_path(@user), method: :delete, class: "btn btn-xs btn-danger", id: "RemoveUserButton" do %>
+				<i class="fa fa-times"></i>&nbsp; Remove user
+			<% end if current_admin && current_admin.id != @user.id %>
 		</div>
 		<div class="courses list-view">
-			<% @user.courses.each do |course| %>
-			<%= render "courses/course", course: course %>
+			<% if @user.courses.blank? %>
+			<br>
+			<h4>Booo! You have no courses. We suggest you create one :)</h4>
+			<p>
+				<%= link_to "Create new course", new_course_path, class: "btn btn-success" %>
+			</p>
+			<% else %>
+				<% @user.courses.each do |course| %>
+					<%= render "courses/course", course: course %>
+				<% end %>
 			<% end %>
 		</div>
 	</div>

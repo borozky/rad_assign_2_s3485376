@@ -14,8 +14,28 @@
       <div class="course-title-wrapper">
         <%= content_tag :h3, @course.name, class: "course-title" %>
       </div>
+      
+  		<% if current_admin %>
+  		<div class="dropdown course-options">
+  		  <button class="btn btn-xs btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+  		    Options
+  		    <span class="caret"></span>
+  		  </button>
+  		  <ul class="dropdown-menu dropdown-menu-left" aria-labelledby="dropdownMenu1">
+  		    <li>
+  		    	<%= link_to course_resetvotes_path(@course), method: :post do %>
+  		    		<i class="fa fa-undo"></i>&nbsp; Reset votes
+  		    	<% end %>
+  		    </li>
+  		    <li>
+  		    	<%= link_to course_path(@course), method: :delete do %>
+  		    		<i class="fa fa-times"></i>&nbsp; Delete course
+  		    	<% end %>
+  		    </li>
+  		  </ul>
+  		</div>
 
-      <% if current_user %>
+      <% elsif current_user %>
         <span class="vote">
           <%= link_to course_vote_path(@course.id, id: @course.id, vote: true), method: :post, class: "vote-up btn btn-sm btn-success" do %>
             <i class="fa fa-thumbs-up"></i> <span class="votes"><%= @course.votes.select{ |v| v.thumbs_up }.size %></span>
@@ -67,7 +87,20 @@
     <div class="course-actions clearfix">
       <%= link_to "Return to course list", courses_path %>
 
-      <% if current_user %>
+      <% if current_admin %>
+      <span class="block pull-right">
+        <%= link_to "#", method: :post, class: "btn btn-sm btn-warning" do %>
+	    		<i class="fa fa-undo"></i>&nbsp; Reset votes
+	    	<% end %>
+	    	&nbsp;
+	    	<%= link_to "#", method: :post, class: "btn btn-sm btn-danger" do %>
+	    		<i class="fa fa-times"></i>&nbsp; Delete course
+	    	<% end %>
+	    	
+      </span>
+
+
+      <% elsif current_user %>
         <span class="vote pull-right">
           <%= link_to course_vote_path(@course.id, id: @course.id, vote: true), method: :post, class: "vote-up btn btn-sm btn-success" do %>
             <i class="fa fa-thumbs-up"></i> <span class="votes"><%= @course.votes.select{ |v| v.thumbs_up }.size %></span>
