@@ -63,3 +63,10 @@ NAVPILLS
         }
     }
 }
+
+/*=========================
+DROPDOWN MENUS
+==========================*/
+.dropdown-menu {
+    @include border-radius(0);
+}

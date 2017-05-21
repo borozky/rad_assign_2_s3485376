@@ -1,0 +1,20 @@
+.circular {
+    @include border-radius(100%)
+}
+
+.sharp {
+    @include border-radius(0);
+}
+
+.elevated {
+    @include elevated();
+}
+
+.vcenter-parent {
+    display: table;
+    
+    .vcenter {
+        display: table-cell;
+        vertical-align: middle;
+    }
+}
