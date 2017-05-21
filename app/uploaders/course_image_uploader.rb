@@ -1,8 +1,8 @@
 class CourseImageUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
-  # include CarrierWave::RMagick
-  # include CarrierWave::MiniMagick
+  #include CarrierWave::RMagick
+  include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
   storage :file
@@ -30,10 +30,18 @@ class CourseImageUploader < CarrierWave::Uploader::Base
   # end
 
   # Create different versions of your uploaded files:
-  # version :thumb do
-  #   process resize_to_fit: [50, 50]
-  # end
-
+  version :thumb do
+    process resize_to_fit: [64, 64]
+  end
+  
+  version :medium_thumbnail do
+    process resize_to_fit: [128, 128]
+  end
+  
+  version :large_thumbnail do
+    process resize_to_fit: [256, 256]
+  end
+  
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
   def extension_whitelist

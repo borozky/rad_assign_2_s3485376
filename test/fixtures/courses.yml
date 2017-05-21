@@ -11,8 +11,8 @@ valid_course2:
   name: "Rapid Application Development"
   description: "Nulla dignissim leo a purus commodo, nec facilisis nibh vulputate."
   prerequisite: "Web Programming"
-  locations: valid_location2
-  categories: category_valid
+  locations:
+  categories:
   
 course_short_name:
   name: "Short"

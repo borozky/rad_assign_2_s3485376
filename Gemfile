@@ -14,6 +14,9 @@ gem "mini_magick"
 gem "font-awesome-rails"
 gem 'bcrypt', '~> 3.1.7'
 
+# gem for AWS
+gem 'aws-sdk', '~> 2'
+
 group :development, :test do
   gem 'sqlite3', '1.3.12'
   gem 'byebug',  '9.0.0', platform: :mri

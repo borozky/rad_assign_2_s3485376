@@ -3,7 +3,7 @@
 	<div class="container">
 		<h2 class="entry-title">Category: <%= @category.name %></h2>
 		<h4><span id="EntryHeaderTitle"><%= "all courses under category \"#{@category.name}\"" %></span></h4>
-		<%= link_to "Edit this category", edit_category_path(@category), class: "btn btn-sm btn-success"%>
+		<%= link_to "Edit this category", edit_category_path(@category), class: "btn btn-sm btn-success" if current_user %>
 	</div>
 </div>
 <% end %>
@@ -37,7 +37,7 @@
 	  <div class="tab-pane" id="Coordinators">
 	  	<div class="coordinators">
 	  		<% @category.courses.map(&:user).each do |coordinator| %>
-	        <%= render "users/coordinator", coordinator: coordinator %>
+	        <%= render "users/coordinator", coordinator: coordinator unless coordinator.nil? %>
 	        <% end %>
 	  	</div>
 	  </div>

@@ -1,9 +1,7 @@
 <%= content_for :entry_header do %>
 <div class="entry-header">
 	<div class="container clearfix">
-		<h2 class="entry-title">All Users
-		  <%= link_to "Add new user", new_user_path, class: "btn btn-sm btn-success pull-right" %>
-		</h2>
+		<h2 class="entry-title">All Users</h2>
 	</div>
 </div>
 <% end %>
@@ -16,7 +14,7 @@
           <th>Avatar</th>
           <th>Name</th>
           <th>Email</th>
-          <th colspan="2">Action</th>
+          <th>Action</th>
         </tr>
         <% @users.each do |user| %>
           <tr>
@@ -24,7 +22,8 @@
             <td><%= user.name %></td>
             <td><%= user.email %></td>
             <td>
-              <%= link_to 'Show', user, class: "btn btn-xs btn-info" %>&nbsp;
+              <%= link_to 'Show', user, class: "btn btn-xs btn-success" %>&nbsp;
+              <%= link_to 'Edit', edit_user_path(user), class: "btn btn-xs btn-info" %>
               <%= link_to 'Remove', user_path(user), method: "delete", class: "btn btn-xs btn-danger" if user.role != "admin" %>
             </td>
             

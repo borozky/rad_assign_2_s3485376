@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
+  before_action :authorize_admin, only: [:index, :destroy]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :authorize, only: [:edit, :update]
-  before_action :authorize_admin, only: [:index, :destroy]
   
   # GET /users
   def index
@@ -19,6 +19,8 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+    # don't edit someone else account
+    forbidden if current_user.id != @user.id && !current_admin
   end
 
   # POST /users
@@ -40,8 +42,15 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
+    if current_user.id != @user.id
+      if !current_admin
+        forbidden
+      end
+    end
+    
     respond_to do |format|
       if @user.update(user_params)
+        flash[:success] = "User was successfully updated"
         format.html { redirect_to @user, success: 'User was successfully updated.' }
         format.json { render :show, status: :ok, location: @user }
       else

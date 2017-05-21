@@ -39,9 +39,12 @@
                       &nbsp;&nbsp;Categories <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu">
+                  
                   <% if @categories.blank? && !current_user %>
                     <li class="disabled"><a href="#">No categories available</a></li>
                   <% else %>
+                    <li><%= link_to "All categories", categories_path %></li>
+                    <li role="separator" class="divider"></li>
                     <% @categories.each do |category| %>
                       <li><%= link_to category.name, category_path(category.id) %></li>
                     <% end %>
@@ -67,9 +70,12 @@
                     >&nbsp;&nbsp;Locations <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu">
+                  
                   <% if @locations.blank? && !current_user  %>
                     <li class="disabled"><a href="#">No locations available</a></li>
                     <% else %>
+                    <li><%= link_to "All locations", locations_path %></li>
+                    <li role="separator" class="divider"></li>
                     <% @locations.each do |location| %>
                       <li><%= link_to location.at, location_path(location.id) %></li>
                     <% end %>

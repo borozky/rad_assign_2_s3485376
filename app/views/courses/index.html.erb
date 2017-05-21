@@ -38,7 +38,7 @@
   	    <div class="coordinators">
         <%  @courses.map(&:user).uniq.each do |coordinator| %>
         <%= render "users/coordinator", coordinator: coordinator %>
-        <% end %>
+        <% end unless @course.blank? %>
   	    </div>
   	  </div>
   	</div><!--end .tab-content-->

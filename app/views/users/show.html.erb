@@ -8,20 +8,27 @@
 				<h3><%= @user.name %></h3>
 				<h4><%= @user.email %></h4>
 			</div>
+			
 			<%= link_to user_path(@user), method: :delete, class: "btn btn-xs btn-danger", id: "RemoveUserButton" do %>
 				<i class="fa fa-times"></i>&nbsp; Remove user
 			<% end if current_admin && current_admin.id != @user.id %>
 		</div>
 		<div class="courses list-view">
 			<% if @user.courses.blank? %>
-			<br>
-			<h4>Booo! You have no courses. We suggest you create one :)</h4>
-			<p>
-				<%= link_to "Create new course", new_course_path, class: "btn btn-success" %>
-			</p>
+			
+				<% if @user.id == current_user.id %>
+				<br>
+				<h4>Booo! You have no courses. We suggest you create one :)</h4>
+				<p>
+					<%= link_to "Create new course", new_course_path, class: "btn btn-success" %>
+				</p>
+				<% else %>
+				<br>
+				<h4>This user has not yet created any courses</h4>
+				<% end %>
 			<% else %>
 				<% @user.courses.each do |course| %>
-					<%= render "courses/course", course: course %>
+					<%= render "courses/course", course: course unless course.nil? %>
 				<% end %>
 			<% end %>
 		</div>

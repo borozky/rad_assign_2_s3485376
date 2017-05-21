@@ -30,9 +30,11 @@ class LocationsController < ApplicationController
 
     respond_to do |format|
       if @location.save
+        flash[:success] = "Location successfully updated"
         format.html { redirect_to @location, success: 'Location was successfully created.' }
         format.json { render :show, status: :created, location: @location }
       else
+        flash[:danger] = "Failed to create new location"
         format.html { render :new }
         format.json { render json: @location.errors, status: :unprocessable_entity }
       end
@@ -44,9 +46,11 @@ class LocationsController < ApplicationController
   def update
     respond_to do |format|
       if @location.update(location_params)
+        flash[:success] = "Location successfully updated"
         format.html { redirect_to @location, success: 'Location was successfully updated.' }
         format.json { render :show, status: :ok, location: @location }
       else
+        flash[:danger] = "Failed to update location"
         format.html { render :edit }
         format.json { render json: @location.errors, status: :unprocessable_entity }
       end
@@ -58,6 +62,7 @@ class LocationsController < ApplicationController
   def destroy
     @location.destroy
     respond_to do |format|
+      flash[:success] = "Successfully deleted location"
       format.html { redirect_to locations_url, success: 'Location was successfully destroyed.' }
       format.json { head :no_content }
     end

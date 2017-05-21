@@ -1,8 +1,8 @@
 class CoursesController < ApplicationController
-  before_action :set_course, only: [:show, :edit, :update, :destroy, :vote]
+  before_action :set_course, only: [:show, :edit, :update, :destroy, :vote, :reset_votes]
   before_action :authorize, except: [:index, :show]
-  before_action :can_edit_course?, only: [:edit, :update, :destroy]
-  before_action :authorize_admin, only: [:reset_votes]
+  before_action :can_edit_course?, only: [:edit, :update]
+  before_action :authorize_admin, only: [:reset_votes, :destroy]
   
   # GET /courses
   # GET /courses.json
@@ -19,6 +19,7 @@ class CoursesController < ApplicationController
   # GET /courses/1
   # GET /courses/1.json
   def show
+    
   end
 
   # GET /courses/new
@@ -53,19 +54,18 @@ class CoursesController < ApplicationController
   end
   
   def reset_votes
-    @course = Course.find(params[:course_id])
-    @course.vote_resets += 1;
-    @course.last_vote_reset = Time.now
     
+    @course.vote_resets += 1
+    @course.last_vote_reset = Time.now
+
     respond_to do |format|
       if @course.save
         flash[:success] = "Votes for this course has successfully reset"
-        format.html { redirect_to @course, success: 'Votes for this course has successfully reset' }
-        format.json { render :show, status: :created, location: @course }
+        format.html { redirect_to @course }
       else
+        
         flash[:danger] = "Votes for this course failed to reset"
         format.html { render :new }
-        format.json { render json: @course.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -84,6 +84,7 @@ class CoursesController < ApplicationController
         format.html { redirect_to @course, success: 'Course was successfully created.' }
         format.json { render :show, status: :created, location: @course }
       else
+        flash[:danger] = "Failed to update curse"
         format.html { render :new }
         format.json { render json: @course.errors, status: :unprocessable_entity }
       end
@@ -128,11 +129,12 @@ class CoursesController < ApplicationController
     def set_course
       @course = Course.find(params[:id])
       
-      votes = @course.votes.select do |vote|
+      # do not assign the result of this filter into @course.vote, else it will make all the course_id of the votes of this course NULL
+      @votes = @course.votes.select do |vote|
         vote.created_at > @course.last_vote_reset
       end
       
-      @course.votes = votes
+      
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

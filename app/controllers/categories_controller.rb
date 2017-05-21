@@ -1,6 +1,7 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: [:show, :edit, :update, :destroy]
   before_action :authorize, except: [:index, :show]
+  before_action :authorize_admin, only: [:destroy]
 
   # GET /categories
   # GET /categories.json
@@ -22,9 +23,6 @@ class CategoriesController < ApplicationController
 
   # GET /categories/1/edit
   def edit
-    # if @course.user.id != current_user.id
-    #   render "forbidden"
-    # end
   end
 
   # POST /categories
@@ -34,9 +32,11 @@ class CategoriesController < ApplicationController
 
     respond_to do |format|
       if @category.save
+        flash[:success] = "Category successfully created."
         format.html { redirect_to @category, success: 'Category was successfully created.' }
         format.json { render :show, status: :created, location: @category }
       else
+        flash[:danger] = "Failed to create category"
         format.html { render :new }
         format.json { render json: @category.errors, status: :unprocessable_entity }
       end
@@ -48,9 +48,11 @@ class CategoriesController < ApplicationController
   def update
     respond_to do |format|
       if @category.update(category_params)
-        format.html { redirect_to @category, success: 'Category was successfully updated.' }
+        flash[:success] = "Category successfully updated."
+        format.html { redirect_to @category }
         format.json { render :show, status: :ok, location: @category }
       else
+        flash[:success] = "Failed to update category."
         format.html { render :edit }
         format.json { render json: @category.errors, status: :unprocessable_entity }
       end
@@ -62,6 +64,7 @@ class CategoriesController < ApplicationController
   def destroy
     @category.destroy
     respond_to do |format|
+      flash[:success] = "Category successfully deleted"
       format.html { redirect_to categories_url, success: 'Category was successfully destroyed.' }
       format.json { head :no_content }
     end

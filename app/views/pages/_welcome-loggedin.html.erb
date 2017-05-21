@@ -1,20 +1,20 @@
 <div class="row clearfix">
 	<div class="col-xs-12 col-sm-6">
 		
-		<h2>View all courses</h2>
-		<p>Update your courses, rate courses and view course information</p>
+		<h2>Browse all courses</h2>
+		<p>View all the courses others have uploaded</p>
 		<p>
-			<%= link_to user_path(current_user), class:"btn btn-success" do %>
-			<span class="fa fa-login"></span> Login to your account
+			<%= link_to courses_path, class:"btn btn-success" do %>
+			<span class="fa fa-book"></span>&nbsp; View all course
 			<% end %>
 		</p>
 	</div>
 	<div class="col-xs-12 col-sm-6">
-		<h2>View Courses as Guest User</h2>
-		<p>Browse and view courses as a guest and signup later</p>
+		<h2>Create new courses</h2>
+		<p>You can create new courses, or even update your existing ones</p>
 		<p>
-			<%= link_to courses_path, class:"btn btn-success" do %>
-			<span class="fa fa-book"></span> Browse all courses
+			<%= link_to new_course_path, class:"btn btn-success" do %>
+			<span class="fa fa-plus"></span>&nbsp; Create new course
 			<% end %>
 		</p>
 	</div>

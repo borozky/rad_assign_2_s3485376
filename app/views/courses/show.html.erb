@@ -5,7 +5,7 @@
 
     <%= link_to edit_course_path(@course), class: "edit-course btn btn-sm btn-info" do %>
     <i class="fa fa-edit"></i> &nbsp;Edit this course
-    <% end if current_user %>
+    <% end if course_editable?(@course) %>
 
     <div class="course-banner">
 
@@ -23,7 +23,7 @@
   		  </button>
   		  <ul class="dropdown-menu dropdown-menu-left" aria-labelledby="dropdownMenu1">
   		    <li>
-  		    	<%= link_to course_resetvotes_path(@course), method: :post do %>
+  		    	<%= link_to course_resetvotes_path(@course, id: @course.id), method: :post do %>
   		    		<i class="fa fa-undo"></i>&nbsp; Reset votes
   		    	<% end %>
   		    </li>
@@ -33,15 +33,27 @@
   		    	<% end %>
   		    </li>
   		  </ul>
-  		</div>
+  		</div><!--end .course-options-->
 
       <% elsif current_user %>
         <span class="vote">
           <%= link_to course_vote_path(@course.id, id: @course.id, vote: true), method: :post, class: "vote-up btn btn-sm btn-success" do %>
-            <i class="fa fa-thumbs-up"></i> <span class="votes"><%= @course.votes.select{ |v| v.thumbs_up }.size %></span>
+            <i class="fa fa-thumbs-up"></i> <span class="votes">
+              <%= 
+              # do not count all the votes from @course.votes, just the ones from @votes
+                @votes.select{ |v| v.thumbs_up }.size 
+              %>
+              </span>
           <% end %>
           <%= link_to course_vote_path(@course.id, id: @course.id, vote: false), method: :post, class: "vote-up btn btn-sm btn-danger" do %>
-            <i class="fa fa-thumbs-down"></i> <span class="votes"><%= @course.votes.select{ |v| v.thumbs_up == false }.size %></span>
+            <i class="fa fa-thumbs-down"></i> 
+            <span class="votes">
+              <%= 
+                # do not count all the votes from @course.votes, just the ones from @votes
+                # votes on @votes are filtered
+                @votes.select{ |v| v.thumbs_up == false }.size 
+              %>
+            </span>
           <% end %>
         </span>
       <% end %>
@@ -103,10 +115,10 @@
       <% elsif current_user %>
         <span class="vote pull-right">
           <%= link_to course_vote_path(@course.id, id: @course.id, vote: true), method: :post, class: "vote-up btn btn-sm btn-success" do %>
-            <i class="fa fa-thumbs-up"></i> <span class="votes"><%= @course.votes.select{ |v| v.thumbs_up }.size %></span>
+            <i class="fa fa-thumbs-up"></i> <span class="votes"><%= @votes.select{ |v| v.thumbs_up }.size %></span>
           <% end %>
           <%= link_to course_vote_path(@course.id, id: @course.id, vote: false), method: :post, class: "vote-up btn btn-sm btn-danger" do %>
-            <i class="fa fa-thumbs-down"></i> <span class="votes"><%= @course.votes.select{ |v| v.thumbs_up == false }.size %></span>
+            <i class="fa fa-thumbs-down"></i> <span class="votes"><%= @votes.select{ |v| v.thumbs_up == false }.size %></span>
           <% end %>
         </span>
       <% end %>

@@ -32,9 +32,8 @@ class ApplicationController < ActionController::Base
   end
   
   def authorize_admin
-    authorize
     
-    unless session[:role] == "admin"
+    unless current_admin
       session[:original_target] = request.url
       flash[:danger] = "Only administrator can access this page"
       forbidden

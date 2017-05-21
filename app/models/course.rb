@@ -1,6 +1,7 @@
 class Course < ApplicationRecord
 	mount_uploader :image, CourseImageUploader
 	
+	
 	has_many :votes
 	has_many :voters, through: :votes
 
@@ -14,4 +15,10 @@ class Course < ApplicationRecord
     validates :name,            length: { minimum: 10 }
     validates :prerequisite,    length: { minimum: 10 }
     validates :description,     length: { minimum: 30 }
+    
+    def recent_votes
+    	return votes.select do |vote|
+    		vote.created_at > last_vote_reset
+    	end
+    end
 end

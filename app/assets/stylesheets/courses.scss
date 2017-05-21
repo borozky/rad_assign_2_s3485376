@@ -9,6 +9,7 @@ LIST OF COURSES
     position: relative;
     font-family: Open Sans, sans-serif;
     margin-bottom: 10px;
+    min-height: 150px;
     
     .vote {
 		display: inline-block;
@@ -128,6 +129,7 @@ LIST OF COURSES
         padding-top: 15px;
         padding-bottom: 15px;
         padding-left: 160px;
+        min-height: 160px;
         
         .course-image-parent {
 		    max-height: 130px;
@@ -288,12 +290,11 @@ EDIT/CREATE COURSE
 	.image-preview-area {
 		margin-top: 7px;
 		display: inline-block;
-		max-width: 240px;
-		max-height: 100px;
 		
 		img {
-			max-height: 120px;
-		    width: auto;
+			max-width: 240px;
+			width: auto;
+			height: auto;
 		}
 	}
 }

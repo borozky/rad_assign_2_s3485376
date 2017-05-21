@@ -1,15 +1,19 @@
 <%= content_for :site_banner do %>
-	<div class="site-banner jumbotron text-center" style="background-image:url(gaussian_blur_2.jpg);background-repeat: no-repeat;background-size: cover">
+	<div class="site-banner jumbotron text-center">
 		<div class="container">
 			<h1><b>Welcome to myCourse Application</b></h1>
 			<h3>myCourse Application helps you to browse, manage and vote for courses easily.</h3>
 			<br>
 			<p>
-				<%= link_to "Sign up now", signup_path, class: "btn btn-lg btn-danger", 
-				id: "HomeIndexBannerButton" if !current_user %>
-				<%= link_to "Go to my profile", user_path(current_user), class: "btn btn-lg btn-danger", 
-				id: "HomeIndexBannerButton" if current_user %>
-				
+				<% if current_user %>
+					<%= link_to user_path(current_user), class: "btn btn-lg btn-danger", id: "HomeIndexBannerButton" do %>
+						<i class="fa fa-user"></i>&nbsp; Go to my profile
+					<% end %>
+				<% else %>
+					<%= link_to signup_path, class: "btn btn-lg btn-danger", id: "HomeIndexBannerButton" do %>
+						<i class="fa fa-user-plus"></i>&nbsp; Sign up now
+					<% end %>
+				<% end %>
 			</p>
 		</div>
 	</div>

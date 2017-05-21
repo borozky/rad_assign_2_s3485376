@@ -1,83 +1,100 @@
 <div class="course-item<%= !course.image.nil? ? " has-image" : "" %>">
   <div class="course-image-parent">
-    <%= image_tag course.image, alt: course.name, class: "course-image" unless course.image.blank? %>
+    <%= image_tag course.image.medium_thumbnail.url , alt: course.name, class: "course-image" unless course.image.blank? %>
 	</div>
 	<div class="course-details">
 		<h1 class="course-title"><%= link_to course.name, course_path(course) %></h1>
-		<p class="course-meta">
-			<b>Course Prerequisites:</b> <span class="course-prerequisites"><%= course.prerequisite %></span><br>
+		<div class="course-meta">
 			
-			<% unless current_page?(controller: "users") && current_user.id != course.user.id %>
-			<b>Category:</b> <span class="course-categories">
-			  <% course.categories.each do |category| %>
-			  <%= link_to category.name, category_path(category) %>
-			  <% end %>
-			</span><br>
-			<b>Location:</b> <span class="course-locations">
-			  <% course.locations.each do |location| %>
-			  <%= link_to location.at, location_path(location) %>
-			  <% end %>
-			  </span><br>
+			<p class="course-meta-item">
+				<b>Course Prerequisites:</b> <span class="course-prerequisites"><%= course.prerequisite %></span>
+			</p>
+			
+			<% unless controller.controller_name == "users" && controller.action_name = "show" %>
+			<p class="course-meta-item">
+				<b>Category:</b> <span class="course-categories">
+				  <% course.categories.each do |category| %>
+				  <%= link_to category.name, category_path(category) %>
+				  <% end %>
+				</span>
+			</p>
+			
+			<p class="course-meta-item">
+				<b>Location:</b> <span class="course-locations">
+					<% course.locations.each do |location| %>
+					<%= link_to location.at, location_path(location) %>
+					<% end %>
+				</span><br>
+			</p>
 			<% end %>
+
 			  
-		</p>
-		<p class="course-coordinator">
+		</div>
+		
+		<% unless controller.controller_name == "users" && controller.action_name = "show" %>
+		<% if ! course.user.nil?%>
+		<div class="course-coordinator">
 			<b>Course coordinator</b>:<br>
 			<span class="coordinator-name"><%= course.user.name %></span>
 			<span class="coordinator-avatar-parent">
 			  <%= image_tag gravatar_image_url(course.user.email), alt: "#{course.user.name} gravatar", class: "coordinator-gravatar" %>
 			</span>
-		</p>
-		<p>
+		</div>
+		<% end %>
+		<% end %>
+		
+		
+		<div>
 			<small>
 				<b>Date created:</b><span class="course-datecreated"> <%= time_ago_in_words(course.created_at) %></span>
 			</small>
-		</p>
+		</div>
+		
 		<% if current_user %>
-			<div class="course-options">
-				<div class="dropdown">
-				  <button class="btn btn-xs btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-				    Options
-				    <span class="caret"></span>
-				  </button>
-				  <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
-				    <li>
-				    	<%= link_to course_resetvotes_path(course), method: :post do %>
-				    		<i class="fa fa-undo"></i>&nbsp; Reset votes
-				    	<% end if current_admin%>
-				    </li>
-				    <li>
-				    	<%= link_to course_path(course), method: :delete do %>
-				    		<i class="fa fa-times"></i>&nbsp; Delete course
-				    	<% end if current_admin %>
-				    </li>
-				    <li>
-				    	<%= link_to edit_course_path(course) do %>
-				    		<i class="fa fa-pencil"></i>&nbsp; Edit course
-				    	<% end if course_editable?(course)%>
-				    </li>
-				    <li>
-				    	<%= link_to course_path(course) do %>
-				    		<i class="fa fa-eye"></i>&nbsp; View course
-				    	<% end %>
-				    </li>
-				  </ul>
-				</div>
+		<div class="course-options">
+			<div class="dropdown">
+			  <button class="btn btn-xs btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+			    Options
+			    <span class="caret"></span>
+			  </button>
+			  <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
+			    <li>
+			    	<%= link_to course_resetvotes_path(course, id: course.id), method: :post do %>
+			    		<i class="fa fa-undo"></i>&nbsp; Reset votes
+			    	<% end if current_admin%>
+			    </li>
+			    <li>
+			    	<%= link_to course_path(course), method: :delete do %>
+			    		<i class="fa fa-times"></i>&nbsp; Delete course
+			    	<% end if current_admin %>
+			    </li>
+			    <li>
+			    	<%= link_to edit_course_path(course) do %>
+			    		<i class="fa fa-pencil"></i>&nbsp; Edit course
+			    	<% end if course_editable?(course)%>
+			    </li>
+			    <li>
+			    	<%= link_to course_path(course) do %>
+			    		<i class="fa fa-eye"></i>&nbsp; View course
+			    	<% end %>
+			    </li>
+			  </ul>
 			</div>
-    <% end %>
+		</div>
+    	<% end %>
+    	
 	</div>
 	<div class="course-actions clearfix">
-
     <span class="edit-view">
     	<% if current_user %>
 	      <%= link_to course_vote_path(course.id, id: course.id, vote: true), class: "btn btn-sm btn-success", method: :post do %>
 	        <i class="fa fa-thumbs-up"></i>
-	        <span class="thumbs-up-votes"><%= course.votes.select{ |v| v.thumbs_up }.size %></span>
+	        <span class="thumbs-up-votes"><%= course.recent_votes.select{ |v| v.thumbs_up }.size %></span>
 	      <% end %>
 	
 	      <%= link_to course_vote_path(course.id, id: course.id, vote: false), class: "btn btn-sm btn-danger", method: :post do %>
 	        <i class="fa fa-thumbs-down"></i>
-	        <span class="thumbs-down-votes"><%= course.votes.select{ |v| v.thumbs_up == false }.size %></span>
+	        <span class="thumbs-down-votes"><%= course.recent_votes.select{ |v| v.thumbs_up == false }.size %></span>
 	      <% end %>
       <% end %>
     </span>

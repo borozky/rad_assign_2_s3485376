@@ -3,7 +3,7 @@
 	<div class="container">
 		<h2 class="entry-title">Location: <%= @location.at %></h2>
 		<h4><span id="EntryHeaderTitle"><%= "all courses scheduled in #{@location.at}" %></span></h4>
-		<%= link_to "Edit location", edit_location_path(@location), class: "btn btn-sm btn-success"%>
+		<%= link_to "Edit location", edit_location_path(@location), class: "btn btn-sm btn-success" if current_user %>
 	</div>
 </div>
 <% end %>
@@ -33,7 +33,7 @@
 	  <div class="tab-pane" id="Coordinators">
 	  	<div class="coordinators">
 		  	<% @location.courses.map(&:user).uniq.each do |coordinator| %>
-	      <%= render "users/coordinator", coordinator: coordinator %>
+	      <%= render "users/coordinator", coordinator: coordinator unless coordinator.nil? %>
 	      <% end %>
 	  	</div>
 	  </div>

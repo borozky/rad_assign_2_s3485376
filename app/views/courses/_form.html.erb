@@ -18,7 +18,10 @@
     <%= f.label :locations %>
     <ul>
       <%= f.collection_check_boxes :location_ids, Location.all, :id, :at do |l| %>
-        <li><%= l.check_box %> &nbsp;<%= l.label %></li>
+        <li>
+          <%= l.check_box %> 
+          &nbsp;<%= l.label %>
+        </li>
       <% end %>
     </ul>
   </div>
