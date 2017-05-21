@@ -2,6 +2,8 @@ class Vote < ApplicationRecord
 	belongs_to :voter, class_name: "User", foreign_key: "user_id"
 	belongs_to :course
 	validates :course_id, presence: true
+	validates :user_id, presence: true
+	validates :thumbs_up, inclusion: { in: [ true, false ] }
 	#validates :user_id, uniqueness: { scope: :course_id, message: "User already voted for this course."	} if :course_num_resets
 	
 	validate :can_vote, on: :create
@@ -21,8 +23,20 @@ class Vote < ApplicationRecord
 		# 		return false
 		# 	end
 		# end
+		if voter.blank?
+			errors.add(:voter, "Voter is required")
+			return false
+		end
 		
-		numvotes = Vote.where(user_id: voter.id, course_id: course.id).select { |vote| vote.created_at > course.last_vote_reset }.count
+		if course.blank?
+			errors.add(:course, "Voter is required")
+			return false
+		end
+		
+		numvotes = Vote.where(user_id: voter.id, course_id: course.id).select { |vote| 
+			vote.created_at > course.last_vote_reset 
+		}.count
+		
 		if numvotes > 0
 			errors.add(:course, "User alredy voted for this course")
 			return false

@@ -148,7 +148,7 @@ class CoursesController < ApplicationController
       end
       
       unless @course.user.id == current_user.id
-        render "forbidden"
+        forbidden
       end
     end
     

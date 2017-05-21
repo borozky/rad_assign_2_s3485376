@@ -14,6 +14,36 @@ valid_course2:
   locations:
   categories:
   
+valid_course_no_reset:
+  name: "Web Programming"
+  description: "This is the description of web programming. It is a course about HTML, CSS and Serverside technologies"
+  prerequisite: "Introduction to Programming"
+  locations: valid_location1
+  categories: category_valid
+  vote_resets: 0
+  
+valid_course_reset_once:
+  name: "Programming Techniques"
+  description: "This is the description of Programming Techniques. It is a course about basic Java"
+  prerequisite: "Introduction to Programming"
+  locations: valid_location1
+  categories: category_valid
+  vote_resets: 1
+  last_vote_reset: <%= 2.hours.ago %>
+  
+valid_course_reset_twice:
+  name: "Software Engineering Fundamentals"
+  description: "This is the description of Software Engineering Fundamentals. It is a course about UML, Requirementss gathering and Java"
+  prerequisite: "Introduction to Programming"
+  locations: valid_location1
+  categories: category_valid
+  vote_resets: 2
+  last_vote_reset: <%= 1.day.ago %>
+  
+  
+  
+  
+  
 course_short_name:
   name: "Short"
   description: "Nulla dignissim leo a purus commodo, nec facilisis nibh vulputate."

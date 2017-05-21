@@ -33,11 +33,10 @@
       <% @categories.each do |category| %>
       <tr>
         <td><%= link_to category.name, category_path(category) %></td>
-        
         <% if current_user %>
         <td>
           <%= link_to "Edit", edit_category_path(category), class: "btn btn-xs btn-info" %>
-          <%= link_to "Remove", category_path(category), method: :delete, class: "btn btn-xs btn-danger" %>
+          <%= link_to "Remove", category_path(category), method: :delete, class: "btn btn-xs btn-danger" if current_admin %>
         </td>
         <% else %>
         <td><%= category.courses.nil? ? "0" : category.courses.count %></td>

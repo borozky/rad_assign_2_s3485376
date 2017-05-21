@@ -15,7 +15,7 @@ gem "font-awesome-rails"
 gem 'bcrypt', '~> 3.1.7'
 
 # gem for AWS
-gem 'aws-sdk', '~> 2'
+gem "fog-aws"
 
 group :development, :test do
   gem 'sqlite3', '1.3.12'
