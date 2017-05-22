@@ -5,9 +5,9 @@ class SessionsController < ApplicationController
   def create
     # login as admin or normal user
     if params[:email] == "admin"
-      user = User.where(role: "admin").first
+      user = User.find_by(role: "admin")
     else
-      user = User.where(role: params[:email]).first
+      user = User.find_by(email: params[:email])
     end
     
   	if user && user.authenticate(params[:password])
