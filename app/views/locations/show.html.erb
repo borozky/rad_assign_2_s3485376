@@ -32,8 +32,12 @@
 	  </div>
 	  <div class="tab-pane" id="Coordinators">
 	  	<div class="coordinators">
-		  	<% @location.courses.map(&:user).uniq.each do |coordinator| %>
-	      <%= render "users/coordinator", coordinator: coordinator unless coordinator.nil? %>
+	  		<% if @location.courses.map(&:user).all? &:nil? %>
+	  			<h4 class="text-left">There are no coordinators for these courses</h2>
+	  		<% else %>
+			  	<% @location.courses.map(&:user).uniq.each do |coordinator| %>
+		      	<%= render "users/coordinator", coordinator: coordinator if coordinator.present? %>
+		      <% end %>
 	      <% end %>
 	  	</div>
 	  </div>

@@ -1,6 +1,6 @@
-<div class="course-item<%= !course.image.nil? ? " has-image" : "" %>">
+<div class="course-item<%= course.image.presence ? " has-image" : "" %>">
   <div class="course-image-parent">
-    <%= image_tag course.image.medium_thumbnail.url , alt: course.name, class: "course-image" unless course.image.blank? %>
+    <%= image_tag course.image.medium_thumbnail.url , alt: course.name, class: "course-image" if course.image.presence %>
 	</div>
 	<div class="course-details">
 		<h1 class="course-title"><%= link_to course.name, course_path(course) %></h1>

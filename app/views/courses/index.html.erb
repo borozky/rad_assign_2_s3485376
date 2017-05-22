@@ -31,15 +31,15 @@
   	    <div class="courses">
         <% @courses.each do |course| %>
         <%= render "course", course: course %>
-        <% end %>
+        <% end if @courses.presence %>
         </div>
   	  </div>
   	  <div class="tab-pane" id="Coordinators">
   	    <div class="coordinators">
-        <%  @courses.map(&:user).uniq.each do |coordinator| %>
-        <%= render "users/coordinator", coordinator: coordinator %>
-        <% end unless @course.blank? %>
-  	    </div>
+  	        <% @coordinators.each do |coordinator| %>
+  	        <%= render "users/coordinator", coordinator: coordinator %>
+  	        <% end if @coordinators.presence %>
+  	    </div><!--end .coordinators-->
   	  </div>
   	</div><!--end .tab-content-->
   <% end %>

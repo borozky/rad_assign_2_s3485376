@@ -1,3 +1,4 @@
+<% if coordinator.presence %>
 <div class="coordinator">
     <% if current_user %>
         <%= link_to user_path(coordinator), class: "gravatar-image-parent" do %>
@@ -10,3 +11,4 @@
     <% end %>
     <span class="coordinator-name">Coordinator name: <%= coordinator.name %></span>
 </div>
+<% end %>

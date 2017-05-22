@@ -83,11 +83,13 @@
 
         </div>
         <div class="col-sm-6">
+          <% unless @course.user.blank? %>
           <p class="course-coordinator">
             <%= image_tag gravatar_image_url(@course.user.email), alt: "#{@course.user.name}'s gravatar" %>
             <b>Course coordinator</b>:<br>
             <%= link_to @course.user.name, user_path(@course.user) %>
           </p>
+          <% end %>
         </div>
       </div>
     </div><!-- end .course-meta -->
@@ -101,11 +103,11 @@
 
       <% if current_admin %>
       <span class="block pull-right">
-        <%= link_to "#", method: :post, class: "btn btn-sm btn-warning" do %>
+        <%= link_to course_resetvotes_path(@course, id: @course.id), method: :post, class: "btn btn-sm btn-warning" do %>
 	    		<i class="fa fa-undo"></i>&nbsp; Reset votes
 	    	<% end %>
 	    	&nbsp;
-	    	<%= link_to "#", method: :post, class: "btn btn-sm btn-danger" do %>
+	    	<%= link_to course_path(@course), method: :delete, class: "btn btn-sm btn-danger" do %>
 	    		<i class="fa fa-times"></i>&nbsp; Delete course
 	    	<% end %>
 	    	

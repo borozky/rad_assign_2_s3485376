@@ -19,7 +19,9 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
   
   def current_admin
-    @current_user ||= User.find(session[:user_id]) if (session[:user_id] && session[:role] == "admin")
+    if current_user.present? && current_user.role == "admin"
+      return current_user 
+    end
   end
   helper_method :current_admin
 
@@ -35,7 +37,7 @@ class ApplicationController < ActionController::Base
     
     unless current_admin
       session[:original_target] = request.url
-      flash[:danger] = "Only administrator can access this page"
+      flash.now[:danger] = "Only administrator can access this page"
       forbidden
     end
   end

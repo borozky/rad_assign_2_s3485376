@@ -36,9 +36,13 @@
 	  </div>
 	  <div class="tab-pane" id="Coordinators">
 	  	<div class="coordinators">
+	  		<% if @category.courses.map(&:user).all? &:nil? %>
+	  			<h4 class="text-left">There are no coordinators for these courses</h2>
+	  		<% else %>
 	  		<% @category.courses.map(&:user).each do |coordinator| %>
 	        <%= render "users/coordinator", coordinator: coordinator unless coordinator.nil? %>
-	        <% end %>
+	      <% end %>
+	      <% end %>
 	  	</div>
 	  </div>
 	</div>

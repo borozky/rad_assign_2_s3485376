@@ -10,8 +10,10 @@ class CoursesController < ApplicationController
     @courses = Course.all.order('created_at DESC')
     @coordinators = []
     @courses.each do |course|
-      @coordinators << course.user
+        @coordinators << course.user if course.user.presence
     end
+    
+    @coordinators = @coordinators.uniq
     @title = "All Courses"
   end
   
@@ -64,7 +66,7 @@ class CoursesController < ApplicationController
         format.html { redirect_to @course }
       else
         
-        flash[:danger] = "Votes for this course failed to reset"
+        flash.now[:danger] = "Votes for this course failed to reset"
         format.html { render :new }
       end
     end
