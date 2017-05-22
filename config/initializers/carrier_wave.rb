@@ -3,6 +3,7 @@ require 'carrierwave/orm/activerecord'
 # from https://gist.github.com/cblunt/1303386/b47377dfbddd7a29af087a64660464dfd35392d3
 if Rails.env.production?
     CarrierWave.configure do |config|
+      config.fog_provider = 'fog/aws'
       config.fog_credentials = {
         # Configuration for Amazon S3 should be made available through an Environment variable.
         # For local installations, export the env variable through the shell OR
