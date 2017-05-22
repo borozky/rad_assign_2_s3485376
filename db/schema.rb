@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 20170522011349) do
     t.datetime "updated_at",                                      null: false
     t.string   "image"
     t.integer  "vote_resets",     default: 0
-    t.datetime "last_vote_reset", default: '2017-05-22 01:31:58'
+    t.datetime "last_vote_reset", default: '2017-05-22 02:10:32'
     t.integer  "users_id"
     t.index ["users_id"], name: "index_courses_on_users_id"
   end
