@@ -1,11 +1,12 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
-
 @import "font-awesome";
 
+// helper styling
 @import "mixins";
 @import "utilities";
 
+// styling for most of the pages
 @import "common";
 @import "footer";
 @import "bootstrap-overrides";
