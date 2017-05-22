@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170520141106) do
+ActiveRecord::Schema.define(version: 20170522011349) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -30,11 +30,11 @@ ActiveRecord::Schema.define(version: 20170520141106) do
     t.string   "prerequisite"
     t.datetime "created_at",                                      null: false
     t.datetime "updated_at",                                      null: false
-    t.integer  "created_by_id"
     t.string   "image"
     t.integer  "vote_resets",     default: 0
-    t.datetime "last_vote_reset", default: '2017-05-21 23:34:31'
-    t.index ["created_by_id"], name: "index_courses_on_created_by_id"
+    t.datetime "last_vote_reset", default: '2017-05-22 01:31:58'
+    t.integer  "users_id"
+    t.index ["users_id"], name: "index_courses_on_users_id"
   end
 
   create_table "courses_locations", id: false, force: :cascade do |t|

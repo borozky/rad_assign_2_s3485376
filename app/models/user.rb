@@ -4,7 +4,7 @@ class User < ApplicationRecord
   has_many :votes
   has_many :voted_courses, through: :votes, class_name: "Course"
 
-  has_many :courses, foreign_key: "created_by_id"
+  has_many :courses, foreign_key: "users_id"
   
   # email, name and password are needed
   validates :name, :email, :password_digest, :password, presence: true
