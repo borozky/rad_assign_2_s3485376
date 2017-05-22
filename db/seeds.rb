@@ -7,10 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-# disable password validation for admin
 admin = User.new
 admin.name = "admin"
-admin.email = "admin@sciencecourses.rmit.edu.au",
+admin.email = "admin@sciencecourses.rmit.edu.au"
 admin.password = "password"
 admin.role = "admin"
 admin.save(validate: false)
