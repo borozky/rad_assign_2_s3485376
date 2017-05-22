@@ -35,9 +35,11 @@
 		<% if ! course.user.nil?%>
 		<div class="course-coordinator">
 			<b>Course coordinator</b>:<br>
-			<span class="coordinator-name"><%= course.user.name %></span>
+			<span class="coordinator-name"><%= link_to course.user.name, user_path(course.user) %></span>
 			<span class="coordinator-avatar-parent">
-			  <%= image_tag gravatar_image_url(course.user.email), alt: "#{course.user.name} gravatar", class: "coordinator-gravatar" %>
+				<%= link_to user_path(course.user) do%>
+			  		<%= image_tag gravatar_image_url(course.user.email), alt: "#{course.user.name} gravatar", class: "coordinator-gravatar" %>
+			  	<% end %>
 			</span>
 		</div>
 		<% end %>

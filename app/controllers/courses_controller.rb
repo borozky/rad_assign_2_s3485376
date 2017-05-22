@@ -7,7 +7,7 @@ class CoursesController < ApplicationController
   # GET /courses
   # GET /courses.json
   def index
-    @courses = Course.all
+    @courses = Course.all.order('created_at DESC')
     @coordinators = []
     @courses.each do |course|
       @coordinators << course.user

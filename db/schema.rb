@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 20170520141106) do
     t.integer  "created_by_id"
     t.string   "image"
     t.integer  "vote_resets",     default: 0
-    t.datetime "last_vote_reset", default: '2017-05-21 05:04:46'
+    t.datetime "last_vote_reset", default: '2017-05-21 23:34:31'
     t.index ["created_by_id"], name: "index_courses_on_created_by_id"
   end
 

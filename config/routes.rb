@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'errors/error_404'
+
+  get 'errors/error_403'
+
+  get 'errors/error_500'
+
   root 'pages#home'
 
   get  "/login"   => "sessions#new",     as: "login"
